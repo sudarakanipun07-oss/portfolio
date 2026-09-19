@@ -34,15 +34,16 @@
             <!-- Desktop Links -->
             <div class="hidden md:flex gap-10 flex-1 justify-center">
                 <div v-for="(link, i) in ['Home', 'About Me', 'Projects', 'Contact']" :key="link" 
-                     class="relative flex flex-col items-center origin-top transition-transform duration-700 pointer-events-auto animate-swing"
-                     :style="`animation-delay: ${i * 0.15}s; animation-duration: ${2.5 + (i % 2) * 0.4}s;`">
+                     class="relative flex flex-col items-center origin-top transition-transform duration-700 pointer-events-auto"
+                     :class="{ 'animate-swing': isScrolled }"
+                     :style="isScrolled ? `animation-delay: ${i * 0.15}s; animation-duration: ${2.5 + (i % 2) * 0.4}s;` : ''">
                     
-                    <div class="w-[2px] transition-all duration-700 ease-bounce opacity-100" 
-                         :class="isDarkBg ? 'bg-white/60' : 'bg-[#111111]/40'"
-                         style="height: calc(var(--nav-string-height, 30px) + env(safe-area-inset-top));"></div>
+                    <div class="w-[2px] transition-all duration-700 ease-bounce" 
+                         :class="[isScrolled ? 'opacity-100' : 'h-0 opacity-0', isDarkBg ? 'bg-white' : 'bg-[#111111]']"
+                         :style="isScrolled ? 'height: calc(var(--nav-string-height, 30px) + env(safe-area-inset-top));' : ''"></div>
                          
-                    <div class="w-1.5 h-1.5 rounded-full -mt-[1px] z-10 transition-all duration-700 ease-bounce opacity-100 scale-100" 
-                         :class="isDarkBg ? 'bg-[#FF6B00]' : 'bg-[#FF6B00]'"></div>
+                    <div class="w-2 h-2 rounded-full -mt-[1px] z-10 transition-all duration-700 ease-bounce" 
+                         :class="[isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-0', isDarkBg ? 'bg-[#FF6B00]' : 'bg-[#FF6B00]']"></div>
                          
                     <a :href="link === 'About Me' ? '#about' : `#${link.toLowerCase()}`" @click.prevent="scrollTo(link === 'About Me' ? 'about' : link.toLowerCase())" 
                        class="text-xs font-bold tracking-widest uppercase transition-all duration-700 whitespace-nowrap px-5 py-2 mt-1 rounded-full border shadow-lg" 
@@ -53,14 +54,14 @@
             </div>
 
             <!-- Mobile & Action Buttons -->
-            <div class="flex items-start gap-3 md:gap-4 pointer-events-auto mt-0 transition-transform duration-700 w-auto md:w-[180px] justify-end" :class="{ 'md:-translate-y-0': !isScrolled, 'md:translate-y-3': isScrolled }">
+            <div class="flex items-start gap-3 md:gap-4 pointer-events-auto mt-2 md:mt-0 transition-transform duration-700 w-auto md:w-[180px] justify-end" :class="{ 'md:mt-0': !isScrolled, 'md:translate-y-3': isScrolled }">
                 
-                <div class="flex flex-col items-center origin-top transition-transform duration-700 animate-swing" style="animation-delay: 0.3s; animation-duration: 2.8s;">
-                    <div class="w-[2px] transition-all duration-700 ease-bounce opacity-100" 
-                         :class="isDarkBg ? 'bg-white/60' : 'bg-[#111111]/40'"
-                         style="height: calc(var(--nav-string-height, 40px) + env(safe-area-inset-top));"></div>
+                <div class="flex flex-col items-center origin-top transition-transform duration-700" :class="{ 'animate-swing': isScrolled }" style="animation-delay: 0.3s; animation-duration: 2.8s;">
+                    <div class="w-[2px] transition-all duration-700 ease-bounce" 
+                         :class="[isScrolled ? 'opacity-100' : 'h-0 opacity-0', isDarkBg ? 'bg-white' : 'bg-[#111111]']"
+                         :style="isScrolled ? 'height: calc(var(--nav-string-height, 40px) + env(safe-area-inset-top));' : ''"></div>
                          
-                    <div class="w-2 h-2 rounded-full bg-[#FF6B00] -mt-[1px] z-10 transition-all duration-700 ease-bounce opacity-100 scale-100"></div>
+                    <div class="w-2 h-2 rounded-full -mt-[1px] z-10 transition-all duration-700 ease-bounce" :class="[isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-0', isDarkBg ? 'bg-[#FF6B00]' : 'bg-[#FF6B00]']"></div>
                     
                     <button @click="openModal" class="text-[10px] md:text-xs font-black tracking-[0.15em] px-4 md:px-6 py-2.5 md:py-3.5 rounded-full flex items-center gap-2 md:hover:-translate-y-0.5 transition-all shadow-lg border mt-1"
                             :class="isScrolled ? (isDarkBg ? 'bg-white text-[#111111] border-transparent hover:bg-[#FF6B00] hover:text-white' : 'bg-[#111111] text-white border-white/10 hover:bg-[#FF6B00]') : 'bg-[#111111] text-white border-white/10 hover:bg-[#FF6B00]'">
@@ -71,12 +72,12 @@
                     </button>
                 </div>
 
-                <div class="flex flex-col items-center origin-top transition-transform duration-700 animate-swing" style="animation-delay: 0.5s; animation-duration: 3.2s;">
-                    <div class="w-[2px] transition-all duration-700 ease-bounce opacity-100" 
-                         :class="isDarkBg ? 'bg-white/60' : 'bg-[#111111]/40'"
-                         style="height: calc(var(--nav-string-height, 40px) + env(safe-area-inset-top));"></div>
+                <div class="flex flex-col items-center origin-top transition-transform duration-700" :class="{ 'animate-swing': isScrolled }" style="animation-delay: 0.5s; animation-duration: 3.2s;">
+                    <div class="w-[2px] transition-all duration-700 ease-bounce" 
+                         :class="[isScrolled ? 'opacity-100' : 'h-0 opacity-0', isDarkBg ? 'bg-white' : 'bg-[#111111]']"
+                         :style="isScrolled ? 'height: calc(var(--nav-string-height, 40px) + env(safe-area-inset-top));' : ''"></div>
                          
-                    <div class="w-2 h-2 rounded-full bg-[#FF6B00] -mt-[1px] z-10 transition-all duration-700 ease-bounce opacity-100 scale-100"></div>
+                    <div class="w-2 h-2 rounded-full -mt-[1px] z-10 transition-all duration-700 ease-bounce" :class="[isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-0', isDarkBg ? 'bg-[#FF6B00]' : 'bg-[#FF6B00]']"></div>
                     
                     <button @click="isSidebarOpen = true" class="transition-all duration-700 ease-bounce flex items-center justify-center p-2.5 md:p-3 rounded-full shadow-lg border mt-1"
                             :class="isScrolled ? (isDarkBg ? 'bg-white text-[#111111] border-transparent hover:bg-[#FF6B00] hover:text-white' : 'bg-[#111111] text-white border-white/10 hover:bg-[#FF6B00]') : 'bg-white text-[#111111] border-gray-100 hover:bg-[#FF6B00] hover:text-white'">
@@ -97,19 +98,19 @@
 
             <div class="absolute inset-0 z-10 pointer-events-none select-none">
                 <div class="absolute left-[4%] sm:left-[5%] md:left-[8%] top-[30%] md:top-[35%] -translate-y-1/2 text-left scale-[0.75] sm:scale-100 origin-left">
-                    <transition-group name="slow-sort" tag="h2" class="text-xl sm:text-3xl md:text-4xl font-light tracking-widest text-[#111111] uppercase whitespace-nowrap flex">
+                    <transition-group name="slow-sort" tag="h2" class="text-xl sm:text-3xl md:text-4xl font-medium md:font-light tracking-widest text-[#111111] uppercase whitespace-nowrap flex drop-shadow-[0_0_12px_rgba(235,229,217,0.9)] md:drop-shadow-none">
                         <span v-for="letter in leftLine1" :key="letter.id" class="inline-block letter-fly" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300" :class="{ 'animate-wiggle-infinite text-[#FF6B00] scale-[1.15] -translate-y-2': letter.isHovered, 'animate-confused text-[#FF6B00]': letter.isConfused, 'animate-happy-jump text-[#FF6B00]': letter.isHappy }">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
-                    <transition-group name="slow-sort" tag="h2" class="text-xl sm:text-3xl md:text-4xl font-light tracking-widest text-[#111111] uppercase whitespace-nowrap flex mt-[-5px]">
+                    <transition-group name="slow-sort" tag="h2" class="text-xl sm:text-3xl md:text-4xl font-medium md:font-light tracking-widest text-[#111111] uppercase whitespace-nowrap flex mt-[-5px] drop-shadow-[0_0_12px_rgba(235,229,217,0.9)] md:drop-shadow-none">
                         <span v-for="letter in leftLine2" :key="letter.id" class="inline-block letter-fly" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300" :class="{ 'animate-wiggle-infinite text-[#FF6B00] scale-[1.15] -translate-y-2': letter.isHovered, 'animate-confused text-[#FF6B00]': letter.isConfused, 'animate-happy-jump text-[#FF6B00]': letter.isHappy }">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
                 </div>
 
                 <div class="absolute right-[4%] sm:right-[5%] md:right-[8%] top-[30%] md:top-[35%] -translate-y-1/2 text-right flex flex-col items-end scale-[0.75] sm:scale-100 origin-right">
-                    <transition-group name="slow-sort" tag="h2" class="text-2xl sm:text-3xl md:text-5xl font-medium tracking-widest text-[#111111] uppercase whitespace-nowrap flex">
+                    <transition-group name="slow-sort" tag="h2" class="text-2xl sm:text-3xl md:text-5xl font-bold md:font-medium tracking-widest text-[#111111] uppercase whitespace-nowrap flex drop-shadow-[0_0_12px_rgba(235,229,217,0.9)] md:drop-shadow-none">
                         <span v-for="letter in rightLine1" :key="letter.id" class="inline-block letter-fly" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300" :class="{ 'animate-wiggle-infinite text-[#FF6B00] scale-[1.15] -translate-y-2': letter.isHovered, 'animate-confused text-[#FF6B00]': letter.isConfused, 'animate-happy-jump text-[#FF6B00]': letter.isHappy }">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
-                    <transition-group name="slow-sort" tag="h2" class="text-2xl sm:text-3xl md:text-5xl font-light tracking-widest text-[#111111] uppercase whitespace-nowrap flex mt-[-5px]">
+                    <transition-group name="slow-sort" tag="h2" class="text-2xl sm:text-3xl md:text-5xl font-medium md:font-light tracking-widest text-[#111111] uppercase whitespace-nowrap flex mt-[-5px] drop-shadow-[0_0_12px_rgba(235,229,217,0.9)] md:drop-shadow-none">
                         <span v-for="letter in rightLine2" :key="letter.id" class="inline-block letter-fly" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300" :class="{ 'animate-wiggle-infinite text-[#FF6B00] scale-[1.15] -translate-y-2': letter.isHovered, 'animate-confused text-[#FF6B00]': letter.isConfused, 'animate-happy-jump text-[#FF6B00]': letter.isHappy }">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
                     <div class="mt-4 h-9"></div>
@@ -131,19 +132,19 @@
 
             <div class="absolute inset-0 z-30 pointer-events-none select-none">
                 <div class="absolute left-[4%] sm:left-[5%] md:left-[8%] top-[30%] md:top-[35%] -translate-y-1/2 text-left scale-[0.75] sm:scale-100 origin-left">
-                    <transition-group name="slow-sort" tag="h2" class="text-xl sm:text-3xl md:text-4xl font-light tracking-widest uppercase whitespace-nowrap flex">
+                    <transition-group name="slow-sort" tag="h2" class="text-xl sm:text-3xl md:text-4xl font-medium md:font-light tracking-widest uppercase whitespace-nowrap flex drop-shadow-[0_0_8px_rgba(235,229,217,0.8)] md:drop-shadow-none">
                         <span v-for="letter in leftLine1" :key="letter.id" class="inline-block letter-fly pointer-events-none" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300 pointer-events-auto cursor-pointer letter-front" :class="{ 'animate-wiggle-infinite scale-[1.15] -translate-y-2 is-active': letter.isHovered, 'animate-confused is-active': letter.isConfused, 'animate-happy-jump is-active': letter.isHappy }" @mouseenter="letter.isHovered = true" @mouseleave="letter.isHovered = false" @touchstart="letter.isHovered = true" @touchend="letter.isHovered = false">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
-                    <transition-group name="slow-sort" tag="h2" class="text-xl sm:text-3xl md:text-4xl font-light tracking-widest uppercase whitespace-nowrap flex mt-[-5px]">
+                    <transition-group name="slow-sort" tag="h2" class="text-xl sm:text-3xl md:text-4xl font-medium md:font-light tracking-widest uppercase whitespace-nowrap flex mt-[-5px] drop-shadow-[0_0_8px_rgba(235,229,217,0.8)] md:drop-shadow-none">
                         <span v-for="letter in leftLine2" :key="letter.id" class="inline-block letter-fly pointer-events-none" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300 pointer-events-auto cursor-pointer letter-front" :class="{ 'animate-wiggle-infinite scale-[1.15] -translate-y-2 is-active': letter.isHovered, 'animate-confused is-active': letter.isConfused, 'animate-happy-jump is-active': letter.isHappy }" @mouseenter="letter.isHovered = true" @mouseleave="letter.isHovered = false" @touchstart="letter.isHovered = true" @touchend="letter.isHovered = false">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
                 </div>
 
                 <div class="absolute right-[4%] sm:right-[5%] md:right-[8%] top-[30%] md:top-[35%] -translate-y-1/2 text-right flex flex-col items-end scale-[0.75] sm:scale-100 origin-right">
-                    <transition-group name="slow-sort" tag="h2" class="text-2xl sm:text-3xl md:text-5xl font-medium tracking-widest uppercase whitespace-nowrap flex">
+                    <transition-group name="slow-sort" tag="h2" class="text-2xl sm:text-3xl md:text-5xl font-bold md:font-medium tracking-widest uppercase whitespace-nowrap flex drop-shadow-[0_0_8px_rgba(235,229,217,0.8)] md:drop-shadow-none">
                         <span v-for="letter in rightLine1" :key="letter.id" class="inline-block letter-fly pointer-events-none" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300 pointer-events-auto cursor-pointer letter-front" :class="{ 'animate-wiggle-infinite scale-[1.15] -translate-y-2 is-active': letter.isHovered, 'animate-confused is-active': letter.isConfused, 'animate-happy-jump is-active': letter.isHappy }" @mouseenter="letter.isHovered = true" @mouseleave="letter.isHovered = false" @touchstart="letter.isHovered = true" @touchend="letter.isHovered = false">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
-                    <transition-group name="slow-sort" tag="h2" class="text-2xl sm:text-3xl md:text-5xl font-light tracking-widest uppercase whitespace-nowrap flex mt-[-5px]">
+                    <transition-group name="slow-sort" tag="h2" class="text-2xl sm:text-3xl md:text-5xl font-medium md:font-light tracking-widest uppercase whitespace-nowrap flex mt-[-5px] drop-shadow-[0_0_8px_rgba(235,229,217,0.8)] md:drop-shadow-none">
                         <span v-for="letter in rightLine2" :key="letter.id" class="inline-block letter-fly pointer-events-none" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300 pointer-events-auto cursor-pointer letter-front" :class="{ 'animate-wiggle-infinite scale-[1.15] -translate-y-2 is-active': letter.isHovered, 'animate-confused is-active': letter.isConfused, 'animate-happy-jump is-active': letter.isHappy }" @mouseenter="letter.isHovered = true" @mouseleave="letter.isHovered = false" @touchstart="letter.isHovered = true" @touchend="letter.isHovered = false">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
                     
@@ -619,26 +620,11 @@
                                 <svg v-if="form.contactMethod === 'whatsapp'" class="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                                 </svg>
-                                <svg v-else class="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg v-else class="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
-                                <span class="text-[10px] md:text-xs font-bold">{{ form.contactMethod === 'whatsapp' ? 'Direct to WhatsApp: +94710474475' : 'Direct to Email: sudarakanipun07@gmail.com' }}</span>
-                            </div>
-
-                            <div class="mb-3 md:mb-4">
-                                <label class="block text-[9px] md:text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1 md:mb-1.5">Your Name</label>
-                                <input v-model="form.name" type="text" placeholder="e.g. Alex" class="w-full px-3 md:px-4 py-2 md:py-2.5 rounded-lg md:rounded-xl border border-gray-200 focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00] outline-none transition-all text-xs md:text-sm font-medium" />
-                            </div>
-                            
-                            <div class="mb-3 md:mb-4">
-                                <label class="block text-[9px] md:text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1 md:mb-1.5">Your Email</label>
-                                <input v-model="form.email" type="email" placeholder="e.g. alex@example.com" class="w-full px-3 md:px-4 py-2 md:py-2.5 rounded-lg md:rounded-xl border border-gray-200 focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00] outline-none transition-all text-xs md:text-sm font-medium" />
-                            </div>
-
-                            <div class="mb-3 md:mb-4">
-                                <label class="block text-[9px] md:text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1 md:mb-1.5">Project Details (Optional)</label>
-                                <textarea v-model="form.details" placeholder="Briefly describe your project requirements..." rows="3" class="w-full px-3 md:px-4 py-2 md:py-2.5 rounded-lg md:rounded-xl border border-gray-200 focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00] outline-none transition-all text-xs md:text-sm font-medium resize-none"></textarea>
-                            </div>
+                                {{ form.contactMethod === 'whatsapp' ? 'Send via WhatsApp' : 'Send via Email' }}
+                            </button>
                         </div>
 
                         <!-- Footer Actions -->
