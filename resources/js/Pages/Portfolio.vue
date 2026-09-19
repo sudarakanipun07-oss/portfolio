@@ -31,6 +31,7 @@
             <div class="hidden xl:block w-[180px]"></div>
             <div class="xl:hidden w-12"></div>
             
+            <!-- Desktop Links -->
             <div class="hidden md:flex gap-10 flex-1 justify-center">
                 <div v-for="(link, i) in ['Home', 'About Me', 'Projects', 'Contact']" :key="link" 
                      class="relative flex flex-col items-center origin-top transition-transform duration-700 pointer-events-auto"
@@ -38,30 +39,32 @@
                      :style="isScrolled ? `animation-delay: ${i * 0.15}s; animation-duration: ${2.5 + (i % 2) * 0.4}s;` : ''">
                     
                     <div class="w-[1.5px] transition-all duration-700 ease-bounce" 
-                         :class="[isScrolled ? 'opacity-100' : 'h-0 opacity-0', isAtAboutSection ? 'bg-white/80' : 'bg-[#111111]/40']"
+                         :class="[isScrolled ? 'opacity-100' : 'h-0 opacity-0', isDarkBg ? 'bg-white/60' : 'bg-[#111111]/40']"
                          :style="isScrolled ? 'height: calc(var(--nav-string-height, 30px) + env(safe-area-inset-top));' : ''"></div>
                          
                     <div class="w-1.5 h-1.5 rounded-full -mt-[1px] z-10 transition-all duration-700 ease-bounce" 
-                         :class="[isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-0', isAtAboutSection ? 'bg-white' : 'bg-[#111111]']"></div>
+                         :class="[isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-0', isDarkBg ? 'bg-white' : 'bg-[#111111]']"></div>
                          
                     <a :href="link === 'About Me' ? '#about' : `#${link.toLowerCase()}`" @click.prevent="scrollTo(link === 'About Me' ? 'about' : link.toLowerCase())" 
-                       class="text-xs font-bold tracking-widest uppercase transition-all duration-700 whitespace-nowrap" 
-                       :class="isScrolled ? (isAtAboutSection ? 'bg-white text-[#111111] px-5 py-2 rounded-full mt-1 shadow-lg hover:bg-[#FF6B00] hover:text-white' : 'bg-[#111111] text-white px-5 py-2 rounded-full mt-1 border border-white/10 hover:bg-[#FF6B00] shadow-lg') : 'text-[#111111] hover:text-[#FF6B00] bg-transparent px-0 py-0 mt-3'">
+                       class="text-xs font-bold tracking-widest uppercase transition-all duration-700 whitespace-nowrap px-5 py-2 mt-1 rounded-full border shadow-lg" 
+                       :class="isScrolled ? (isDarkBg ? 'bg-white text-[#111111] border-transparent hover:bg-[#FF6B00] hover:text-white' : 'bg-[#111111] text-white border-white/10 hover:bg-[#FF6B00]') : 'text-[#111111] hover:text-[#FF6B00] bg-transparent border-transparent shadow-none px-0 py-0 mt-3'">
                         {{ link }}
                     </a>
                 </div>
             </div>
 
+            <!-- Mobile & Action Buttons -->
             <div class="flex items-start gap-3 md:gap-4 pointer-events-auto mt-2 md:mt-0 transition-transform duration-700 w-auto md:w-[180px] justify-end" :class="{ 'md:mt-0': !isScrolled, 'md:translate-y-3': isScrolled }">
                 
-                <div class="flex flex-col items-center origin-top transition-transform duration-700" :class="{ 'md:animate-swing': isScrolled }" style="animation-delay: 0.3s; animation-duration: 2.8s;">
-                    <div class="hidden md:block w-[1.5px] transition-all duration-700 ease-bounce" 
-                         :class="[isScrolled ? 'opacity-100' : 'h-0 opacity-0', isAtAboutSection ? 'bg-white/80' : 'bg-[#111111]/40']"
+                <div class="flex flex-col items-center origin-top transition-transform duration-700" :class="{ 'animate-swing': isScrolled }" style="animation-delay: 0.3s; animation-duration: 2.8s;">
+                    <div class="w-[1.5px] transition-all duration-700 ease-bounce" 
+                         :class="[isScrolled ? 'opacity-100' : 'h-0 opacity-0', isDarkBg ? 'bg-white/60' : 'bg-[#111111]/40']"
                          :style="isScrolled ? 'height: calc(var(--nav-string-height, 40px) + env(safe-area-inset-top));' : ''"></div>
                          
-                    <div class="hidden md:block w-2 h-2 rounded-full bg-[#FF6B00] -mt-[1px] z-10 transition-all duration-700 ease-bounce" :class="isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-0'"></div>
+                    <div class="w-2 h-2 rounded-full bg-[#FF6B00] -mt-[1px] z-10 transition-all duration-700 ease-bounce" :class="isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-0'"></div>
                     
-                    <button @click="openModal" class="bg-[#111111] text-white text-[10px] md:text-xs font-black tracking-[0.15em] px-4 md:px-6 py-2.5 md:py-3.5 rounded-full flex items-center gap-2 hover:bg-[#FF6B00] md:hover:-translate-y-0.5 transition-all shadow-lg border border-white/10 mt-1">
+                    <button @click="openModal" class="text-[10px] md:text-xs font-black tracking-[0.15em] px-4 md:px-6 py-2.5 md:py-3.5 rounded-full flex items-center gap-2 md:hover:-translate-y-0.5 transition-all shadow-lg border mt-1"
+                            :class="isScrolled ? (isDarkBg ? 'bg-white text-[#111111] border-transparent hover:bg-[#FF6B00] hover:text-white' : 'bg-[#111111] text-white border-white/10 hover:bg-[#FF6B00]') : 'bg-[#111111] text-white border-white/10 hover:bg-[#FF6B00]'">
                         HIRE NOW
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 19L19 5M19 5v10M19 5H9" />
@@ -69,14 +72,15 @@
                     </button>
                 </div>
 
-                <div class="flex flex-col items-center origin-top transition-transform duration-700" :class="{ 'md:animate-swing': isScrolled }" style="animation-delay: 0.5s; animation-duration: 3.2s;">
-                    <div class="hidden md:block w-[1.5px] transition-all duration-700 ease-bounce" 
-                         :class="[isScrolled ? 'opacity-100' : 'h-0 opacity-0', isAtAboutSection ? 'bg-white/80' : 'bg-[#111111]/40']"
+                <div class="flex flex-col items-center origin-top transition-transform duration-700" :class="{ 'animate-swing': isScrolled }" style="animation-delay: 0.5s; animation-duration: 3.2s;">
+                    <div class="w-[1.5px] transition-all duration-700 ease-bounce" 
+                         :class="[isScrolled ? 'opacity-100' : 'h-0 opacity-0', isDarkBg ? 'bg-white/60' : 'bg-[#111111]/40']"
                          :style="isScrolled ? 'height: calc(var(--nav-string-height, 40px) + env(safe-area-inset-top));' : ''"></div>
                          
-                    <div class="hidden md:block w-2 h-2 rounded-full bg-[#FF6B00] -mt-[1px] z-10 transition-all duration-700 ease-bounce" :class="isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-0'"></div>
+                    <div class="w-2 h-2 rounded-full bg-[#FF6B00] -mt-[1px] z-10 transition-all duration-700 ease-bounce" :class="isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-0'"></div>
                     
-                    <button @click="isSidebarOpen = true" class="transition-all duration-700 ease-bounce flex items-center justify-center bg-white text-[#111111] p-2.5 md:p-3 rounded-full shadow-lg border border-gray-100 hover:bg-[#FF6B00] hover:text-white mt-1">
+                    <button @click="isSidebarOpen = true" class="transition-all duration-700 ease-bounce flex items-center justify-center p-2.5 md:p-3 rounded-full shadow-lg border mt-1"
+                            :class="isScrolled ? (isDarkBg ? 'bg-white text-[#111111] border-transparent hover:bg-[#FF6B00] hover:text-white' : 'bg-[#111111] text-white border-white/10 hover:bg-[#FF6B00]') : 'bg-white text-[#111111] border-gray-100 hover:bg-[#FF6B00] hover:text-white'">
                         <svg class="transition-all duration-700 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
@@ -93,7 +97,7 @@
             </div>
 
             <div class="absolute inset-0 z-10 pointer-events-none select-none">
-                <div class="absolute left-[4%] sm:left-[5%] md:left-[8%] top-[30%] md:top-[35%] -translate-y-1/2 text-left scale-[0.8] sm:scale-100 origin-left">
+                <div class="absolute left-[4%] sm:left-[5%] md:left-[8%] top-[30%] md:top-[35%] -translate-y-1/2 text-left scale-[0.75] sm:scale-100 origin-left">
                     <transition-group name="slow-sort" tag="h2" class="text-xl sm:text-3xl md:text-4xl font-black tracking-tighter text-[#111111] uppercase whitespace-nowrap flex">
                         <span v-for="letter in leftLine1" :key="letter.id" class="inline-block letter-fly" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300" :class="{ 'animate-wiggle-infinite text-[#FF6B00] scale-[1.15] -translate-y-2': letter.isHovered, 'animate-confused text-[#FF6B00]': letter.isConfused, 'animate-happy-jump text-[#FF6B00]': letter.isHappy }">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
@@ -102,7 +106,7 @@
                     </transition-group>
                 </div>
 
-                <div class="absolute right-[4%] sm:right-[5%] md:right-[8%] top-[30%] md:top-[35%] -translate-y-1/2 text-right flex flex-col items-end scale-[0.8] sm:scale-100 origin-right">
+                <div class="absolute right-[4%] sm:right-[5%] md:right-[8%] top-[30%] md:top-[35%] -translate-y-1/2 text-right flex flex-col items-end scale-[0.75] sm:scale-100 origin-right">
                     <transition-group name="slow-sort" tag="h2" class="text-2xl sm:text-3xl md:text-5xl font-black tracking-tighter text-[#111111] uppercase whitespace-nowrap flex">
                         <span v-for="letter in rightLine1" :key="letter.id" class="inline-block letter-fly" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300" :class="{ 'animate-wiggle-infinite text-[#FF6B00] scale-[1.15] -translate-y-2': letter.isHovered, 'animate-confused text-[#FF6B00]': letter.isConfused, 'animate-happy-jump text-[#FF6B00]': letter.isHappy }">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
@@ -112,11 +116,12 @@
                     <div class="mt-4 h-9"></div>
                 </div>
 
-                <div class="absolute w-full top-[68%] md:top-[68%] -translate-y-1/2 text-center flex flex-col items-center justify-center scale-[1.2] md:scale-100">
-                    <transition-group name="slow-sort" tag="h1" class="text-[14vw] md:text-[10vw] font-black leading-[0.85] tracking-tighter uppercase whitespace-nowrap flex">
+                <div class="absolute w-full top-[68%] md:top-[68%] -translate-y-1/2 text-center flex flex-col items-center justify-center">
+                    <!-- Adjusted mobile text size to 9.5vw to prevent DEVELOPER from cutting off -->
+                    <transition-group name="slow-sort" tag="h1" class="text-[9.5vw] md:text-[10vw] font-black leading-[0.85] tracking-tighter uppercase whitespace-nowrap flex">
                         <span v-for="letter in line1" :key="letter.id" class="inline-block letter-fly" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300" :class="{ 'animate-wiggle-infinite text-[#FF6B00] scale-[1.15] -translate-y-5': letter.isHovered, 'animate-confused text-[#FF6B00]': letter.isConfused, 'animate-happy-jump text-[#FF6B00]': letter.isHappy }">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
-                    <transition-group name="slow-sort" tag="h1" class="text-[14vw] md:text-[10vw] font-black leading-[0.85] tracking-tighter uppercase whitespace-nowrap flex">
+                    <transition-group name="slow-sort" tag="h1" class="text-[9.5vw] md:text-[10vw] font-black leading-[0.85] tracking-tighter uppercase whitespace-nowrap flex">
                         <span v-for="letter in line2" :key="letter.id" class="inline-block letter-fly" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300" :class="{ 'animate-wiggle-infinite text-[#FF6B00] scale-[1.15] -translate-y-5': letter.isHovered, 'animate-confused text-[#FF6B00]': letter.isConfused, 'animate-happy-jump text-[#FF6B00]': letter.isHappy }">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
                 </div>
@@ -127,7 +132,7 @@
             </div>
 
             <div class="absolute inset-0 z-30 pointer-events-none select-none">
-                <div class="absolute left-[4%] sm:left-[5%] md:left-[8%] top-[30%] md:top-[35%] -translate-y-1/2 text-left scale-[0.8] sm:scale-100 origin-left">
+                <div class="absolute left-[4%] sm:left-[5%] md:left-[8%] top-[30%] md:top-[35%] -translate-y-1/2 text-left scale-[0.75] sm:scale-100 origin-left">
                     <transition-group name="slow-sort" tag="h2" class="text-xl sm:text-3xl md:text-4xl font-black tracking-tighter uppercase whitespace-nowrap flex">
                         <span v-for="letter in leftLine1" :key="letter.id" class="inline-block letter-fly pointer-events-none" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300 pointer-events-auto cursor-pointer letter-front" :class="{ 'animate-wiggle-infinite scale-[1.15] -translate-y-2 is-active': letter.isHovered, 'animate-confused is-active': letter.isConfused, 'animate-happy-jump is-active': letter.isHappy }" @mouseenter="letter.isHovered = true" @mouseleave="letter.isHovered = false" @touchstart="letter.isHovered = true" @touchend="letter.isHovered = false">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
@@ -136,7 +141,7 @@
                     </transition-group>
                 </div>
 
-                <div class="absolute right-[4%] sm:right-[5%] md:right-[8%] top-[30%] md:top-[35%] -translate-y-1/2 text-right flex flex-col items-end scale-[0.8] sm:scale-100 origin-right">
+                <div class="absolute right-[4%] sm:right-[5%] md:right-[8%] top-[30%] md:top-[35%] -translate-y-1/2 text-right flex flex-col items-end scale-[0.75] sm:scale-100 origin-right">
                     <transition-group name="slow-sort" tag="h2" class="text-2xl sm:text-3xl md:text-5xl font-black tracking-tighter uppercase whitespace-nowrap flex">
                         <span v-for="letter in rightLine1" :key="letter.id" class="inline-block letter-fly pointer-events-none" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300 pointer-events-auto cursor-pointer letter-front" :class="{ 'animate-wiggle-infinite scale-[1.15] -translate-y-2 is-active': letter.isHovered, 'animate-confused is-active': letter.isConfused, 'animate-happy-jump is-active': letter.isHappy }" @mouseenter="letter.isHovered = true" @mouseleave="letter.isHovered = false" @touchstart="letter.isHovered = true" @touchend="letter.isHovered = false">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
@@ -152,11 +157,11 @@
                     </a>
                 </div>
 
-                <div class="absolute w-full top-[68%] md:top-[68%] -translate-y-1/2 text-center flex flex-col items-center justify-center scale-[1.2] md:scale-100">
-                    <transition-group name="slow-sort" tag="h1" class="text-[14vw] md:text-[10vw] font-black leading-[0.85] tracking-tighter uppercase whitespace-nowrap flex">
+                <div class="absolute w-full top-[68%] md:top-[68%] -translate-y-1/2 text-center flex flex-col items-center justify-center">
+                    <transition-group name="slow-sort" tag="h1" class="text-[9.5vw] md:text-[10vw] font-black leading-[0.85] tracking-tighter uppercase whitespace-nowrap flex">
                         <span v-for="letter in line1" :key="letter.id" class="inline-block letter-fly pointer-events-none" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300 pointer-events-auto cursor-pointer letter-front" :class="{ 'animate-wiggle-infinite scale-[1.15] -translate-y-5 is-active': letter.isHovered, 'animate-confused is-active': letter.isConfused, 'animate-happy-jump is-active': letter.isHappy }" @mouseenter="letter.isHovered = true" @mouseleave="letter.isHovered = false" @touchstart="letter.isHovered = true" @touchend="letter.isHovered = false">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
-                    <transition-group name="slow-sort" tag="h1" class="text-[14vw] md:text-[10vw] font-black leading-[0.85] tracking-tighter uppercase whitespace-nowrap flex">
+                    <transition-group name="slow-sort" tag="h1" class="text-[9.5vw] md:text-[10vw] font-black leading-[0.85] tracking-tighter uppercase whitespace-nowrap flex">
                         <span v-for="letter in line2" :key="letter.id" class="inline-block letter-fly pointer-events-none" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300 pointer-events-auto cursor-pointer letter-front" :class="{ 'animate-wiggle-infinite scale-[1.15] -translate-y-5 is-active': letter.isHovered, 'animate-confused is-active': letter.isConfused, 'animate-happy-jump text-[#FF6B00]': letter.isHappy }" @mouseenter="letter.isHovered = true" @mouseleave="letter.isHovered = false" @touchstart="letter.isHovered = true" @touchend="letter.isHovered = false">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
                 </div>
@@ -219,7 +224,8 @@
 
                     <div class="relative z-20 flex items-center justify-center w-full max-w-[280px] sm:max-w-[320px] md:max-w-[480px]">
                         
-                        <div class="absolute right-[5%] sm:right-[15%] lg:right-[85%] top-1/2 -translate-y-1/2 w-[320px] md:w-[350px] h-[450px] pointer-events-none transition-opacity duration-500 mr-2 md:mr-6 z-0 scale-[0.75] sm:scale-100 origin-right"
+                        <!-- Restored Exact Coordinates for Desktop, Scaled for Mobile -->
+                        <div class="absolute right-[15%] lg:right-[85%] top-1/2 -translate-y-1/2 w-[320px] md:w-[350px] h-[450px] pointer-events-none transition-opacity duration-500 mr-2 md:mr-6 z-0 scale-[0.6] sm:scale-[0.8] md:scale-100 origin-right"
                              :class="showDetails ? 'opacity-100' : 'opacity-0'">
 
                              <svg class="absolute inset-0 w-full h-full overflow-visible z-0" :class="showDetails ? 'opacity-100' : 'opacity-0'">
@@ -867,6 +873,7 @@ const handleScroll = () => {
     const contactEl = document.getElementById('contact');
     const contactTop = contactEl ? contactEl.offsetTop - h / 3 : 9999999;
     
+    // Check if we are in a dark background area
     isDarkBg.value = (y > h * 0.8 && y < h * 2.2) || (y > contactTop);
 
     const items = document.querySelectorAll('.timeline-item');
