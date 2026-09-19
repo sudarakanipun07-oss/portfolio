@@ -223,7 +223,7 @@
 
                     <div class="relative z-20 flex items-center justify-center w-full max-w-[260px] xs:max-w-[280px] sm:max-w-[320px] md:max-w-[480px]">
 
-                        <div class="absolute right-[15%] lg:right-[85%] top-1/2 -translate-y-1/2 w-[320px] md:w-[350px] h-[450px] pointer-events-none transition-opacity duration-500 mr-2 md:mr-6 z-0 scale-[0.55] xs:scale-[0.6] sm:scale-[0.8] md:scale-100 origin-right"
+                        <div class="absolute left-[-20%] xs:left-[-10%] sm:left-[0%] right-auto lg:left-auto lg:right-[85%] top-1/2 -translate-y-1/2 w-[320px] md:w-[350px] h-[450px] pointer-events-none transition-opacity duration-500 mr-2 md:mr-6 z-40 lg:z-0 scale-[0.55] xs:scale-[0.6] sm:scale-[0.8] md:scale-100 origin-left lg:origin-right"
                              :class="showDetails ? 'opacity-100' : 'opacity-0'">
 
                              <svg class="absolute inset-0 w-full h-full overflow-visible z-0" :class="showDetails ? 'opacity-100' : 'opacity-0'">
@@ -968,8 +968,12 @@ html {
     }
 
     /* Lighter letter outline (thinner stroke) for mobile readability */
-    .letter-front { -webkit-text-stroke: 1.5px #EBE5D9; }
-    .letter-front.is-active { -webkit-text-stroke: 1.5px #FF6B00 !important; }
+    .letter-front {
+        -webkit-text-stroke: 1px #111111;
+        color: rgba(255, 255, 255, 0.9);
+        filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.5));
+    }
+    .letter-front.is-active { -webkit-text-stroke: 1px #FF6B00 !important; }
 
     /* Prevent accidental text selection on hero letters */
     .letter-fly, .letter-front {
@@ -994,8 +998,11 @@ html {
     :root {
         --nav-string-height: 18px;
     }
-    .letter-front { -webkit-text-stroke: 1.2px #EBE5D9; }
-    .letter-front.is-active { -webkit-text-stroke: 1.2px #FF6B00 !important; }
+    .letter-front {
+        -webkit-text-stroke: 1px #111111;
+        color: rgba(255, 255, 255, 0.9);
+    }
+    .letter-front.is-active { -webkit-text-stroke: 1px #FF6B00 !important; }
 }
 
 /* MODAL ANIMATION */
