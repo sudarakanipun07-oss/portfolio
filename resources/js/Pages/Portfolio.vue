@@ -1,7 +1,7 @@
 <template>
     <div class="font-sans text-[#111111] bg-[#EBE5D9] selection:bg-[#FF6B00] selection:text-white overflow-x-hidden relative">
         
-        <!-- SIDEBAR OVERLAY (Transparent Glassmorphism) -->
+        <!-- SIDEBAR OVERLAY -->
         <div class="fixed inset-0 z-[60] pointer-events-none">
             <div class="absolute inset-0 bg-black/5 transition-opacity duration-500" 
                  :class="isSidebarOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0'"
@@ -12,7 +12,7 @@
                 
                 <button @click="isSidebarOpen = false" class="self-end mb-12 hover:text-[#FF6B00] transition-colors duration-300" :class="isDarkBg ? 'text-white' : 'text-[#111111]'">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
                 
@@ -28,11 +28,9 @@
         <!-- MAIN NAVBAR -->
         <nav class="fixed top-0 left-0 right-0 z-[55] flex items-start justify-between px-6 md:px-12 max-w-[1600px] mx-auto w-full pointer-events-none">
             
-            <!-- Left Contact Info (Placeholder) -->
             <div class="hidden xl:block w-[180px]"></div>
             <div class="xl:hidden w-12"></div>
             
-            <!-- Center Nav Links -->
             <div class="hidden md:flex gap-10 flex-1 justify-center">
                 <div v-for="(link, i) in ['Home', 'About Me', 'Projects', 'Contact']" :key="link" 
                      class="relative flex flex-col items-center origin-top transition-transform duration-700 pointer-events-auto"
@@ -54,7 +52,6 @@
                 </div>
             </div>
 
-            <!-- Right Nav Buttons -->
             <div class="flex items-start gap-4 pointer-events-auto mt-4 md:mt-0 transition-transform duration-700 w-[180px] justify-end" :class="{ 'md:mt-0': !isScrolled, 'md:translate-y-3': isScrolled }">
                 
                 <div class="flex flex-col items-center origin-top transition-transform duration-700" :class="{ 'animate-swing': isScrolled }" style="animation-delay: 0.3s; animation-duration: 2.8s;">
@@ -66,7 +63,9 @@
                     
                     <button @click="openModal" class="bg-[#111111] text-white text-[10px] md:text-xs font-black tracking-[0.15em] px-5 md:px-6 py-2.5 md:py-3.5 rounded-full flex items-center gap-2 hover:bg-[#FF6B00] hover:-translate-y-0.5 transition-all shadow-lg border border-white/10 mt-1">
                         HIRE NOW
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 19L19 5M19 5v10M19 5H9"></path></svg>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 19L19 5M19 5v10M19 5H9" />
+                        </svg>
                     </button>
                 </div>
 
@@ -79,8 +78,7 @@
                     
                     <button @click="isSidebarOpen = true" class="transition-all duration-700 ease-bounce flex items-center justify-center bg-white text-[#111111] p-3 rounded-full shadow-lg border border-gray-100 hover:bg-[#FF6B00] hover:text-white mt-1">
                         <svg class="transition-all duration-700 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <!-- Changed to 3 lines (hamburger icon) -->
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
                 </div>
@@ -149,7 +147,7 @@
                     <a href="/Nipun_CV.pdf" download="Nipun_Sudaraka_CV.pdf" class="mt-4 px-6 py-2.5 text-xs font-black tracking-wider text-white uppercase transition-colors bg-[#111111] rounded hover:bg-[#FF6B00] opacity-0 anim-fade-in-cv pointer-events-auto shadow-[0_4px_15px_rgba(0,0,0,0.1)] hover:-translate-y-0.5 duration-300 flex items-center gap-2">
                         Download CV
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                         </svg>
                     </a>
                 </div>
@@ -159,7 +157,7 @@
                         <span v-for="letter in line1" :key="letter.id" class="inline-block letter-fly pointer-events-none" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300 pointer-events-auto cursor-pointer letter-front" :class="{ 'animate-wiggle-infinite scale-[1.15] -translate-y-5 is-active': letter.isHovered, 'animate-confused is-active': letter.isConfused, 'animate-happy-jump is-active': letter.isHappy }" @mouseenter="letter.isHovered = true" @mouseleave="letter.isHovered = false" @touchstart="letter.isHovered = true" @touchend="letter.isHovered = false">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
                     <transition-group name="slow-sort" tag="h1" class="text-[10vw] font-black leading-[0.85] tracking-tighter uppercase whitespace-nowrap flex">
-                        <span v-for="letter in line2" :key="letter.id" class="inline-block letter-fly pointer-events-none" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300 pointer-events-auto cursor-pointer letter-front" :class="{ 'animate-wiggle-infinite scale-[1.15] -translate-y-5 is-active': letter.isHovered, 'animate-confused is-active': letter.isConfused, 'animate-happy-jump is-active': letter.isHappy }" @mouseenter="letter.isHovered = true" @mouseleave="letter.isHovered = false" @touchstart="letter.isHovered = true" @touchend="letter.isHovered = false">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
+                        <span v-for="letter in line2" :key="letter.id" class="inline-block letter-fly pointer-events-none" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300 pointer-events-auto cursor-pointer letter-front" :class="{ 'animate-wiggle-infinite scale-[1.15] -translate-y-5 is-active': letter.isHovered, 'animate-confused is-active': letter.isConfused, 'animate-happy-jump text-[#FF6B00]': letter.isHappy }" @mouseenter="letter.isHovered = true" @mouseleave="letter.isHovered = false" @touchstart="letter.isHovered = true" @touchend="letter.isHovered = false">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
                 </div>
             </div>
@@ -241,7 +239,7 @@
                                  </svg>
                                  <div class="relative z-10 flex items-center gap-1.5 px-2 py-0.5">
                                      <svg class="w-3.5 h-3.5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                                      </svg>
                                      <span class="text-[11px] font-bold text-white whitespace-nowrap">Problem Solving</span>
                                  </div>
@@ -255,7 +253,7 @@
                                  </svg>
                                  <div class="relative z-10 flex items-center gap-1.5 px-2 py-0.5">
                                      <svg class="w-3.5 h-3.5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                                      </svg>
                                      <span class="text-[11px] font-bold text-white whitespace-nowrap">Communication</span>
                                  </div>
@@ -269,7 +267,7 @@
                                  </svg>
                                  <div class="relative z-10 flex items-center gap-1.5 px-2 py-0.5">
                                      <svg class="w-3.5 h-3.5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                                      </svg>
                                      <span class="text-[11px] font-bold text-white whitespace-nowrap">Teamwork</span>
                                  </div>
@@ -283,7 +281,7 @@
                                  </svg>
                                  <div class="relative z-10 flex items-center gap-1.5 px-2 py-0.5">
                                      <svg class="w-3.5 h-3.5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                                      </svg>
                                      <span class="text-[11px] font-bold text-white whitespace-nowrap">AI Prompting & Handling</span>
                                  </div>
@@ -297,7 +295,7 @@
                                  </svg>
                                  <div class="relative z-10 flex items-center gap-1.5 px-2 py-0.5">
                                      <svg class="w-3.5 h-3.5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                      </svg>
                                      <span class="text-[11px] font-bold text-white whitespace-nowrap">Deep Passion for Tech</span>
                                  </div>
@@ -311,7 +309,7 @@
                                  </svg>
                                  <div class="relative z-10 flex flex-col items-center gap-1 px-3 text-center">
                                      <svg class="w-4 h-4 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 11h2M12 10v2M15 11h2M16 10v2M8 11h.01M5 11h.01M6.5 9.5v3M4 6h16a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2z"></path>
+                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 11h2M12 10v2M15 11h2M16 10v2M8 11h.01M5 11h.01M6.5 9.5v3M4 6h16a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2z" />
                                      </svg>
                                      <span class="text-[10px] font-medium text-white leading-tight">Playing PC games sparked my tech interest.</span>
                                  </div>
@@ -406,12 +404,12 @@
                         <div class="flex gap-2 shrink-0">
                             <button @click="scrollProjects('left')" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-[#111111] hover:border-gray-300 transition-colors cursor-pointer">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                                 </svg>
                             </button>
                             <button @click="scrollProjects('right')" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-[#111111] hover:border-gray-300 transition-colors cursor-pointer">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                                 </svg>
                             </button>
                         </div>
@@ -497,7 +495,7 @@
                         <button @click="submitFooterForm" class="bg-white text-[#111111] font-bold text-sm px-8 py-3.5 rounded-xl w-max hover:bg-[#FF6B00] hover:text-white transition-colors flex items-center gap-2 mt-2">
                             Send Message
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                             </svg>
                         </button>
                     </div>
@@ -541,7 +539,7 @@
                     <div class="p-6 md:p-8 pb-4 relative">
                         <button @click="closeModal" class="absolute top-6 right-6 w-8 h-8 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full flex items-center justify-center transition-colors">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
                         
@@ -561,7 +559,7 @@
                                      :class="currentStep > step ? 'bg-[#FF6B00] text-white' : currentStep === step ? 'bg-[#FF6B00] text-white shadow-md shadow-[#FF6B00]/30' : 'bg-gray-100 text-gray-400'">
                                     <span v-if="currentStep <= step">{{ step }}</span>
                                     <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
                                     </svg>
                                 </div>
                                 <span class="text-[9px] font-bold uppercase tracking-widest mt-2 transition-colors duration-300" :class="currentStep >= step ? 'text-[#FF6B00]' : 'text-gray-400'">
@@ -602,13 +600,13 @@
                             <div class="mb-5 flex items-center gap-2 p-1 bg-gray-50 rounded-xl border border-gray-100">
                                 <button @click="form.contactMethod = 'whatsapp'" class="flex-1 py-3 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-2" :class="form.contactMethod === 'whatsapp' ? 'bg-white shadow-sm text-[#FF6B00] border border-gray-200' : 'text-gray-500 hover:text-[#111111]'">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
+                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                                     </svg>
                                     WhatsApp Inquiry
                                 </button>
                                 <button @click="form.contactMethod = 'email'" class="flex-1 py-3 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-2" :class="form.contactMethod === 'email' ? 'bg-white shadow-sm text-[#FF6B00] border border-gray-200' : 'text-gray-500 hover:text-[#111111]'">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
                                     Email Inquiry
                                 </button>
@@ -616,10 +614,53 @@
 
                             <div class="mb-5 p-3 rounded-lg border flex items-center gap-2" :class="form.contactMethod === 'whatsapp' ? 'bg-[#25D366]/10 border-[#25D366]/30 text-[#25D366]' : 'bg-[#FF6B00]/10 border-[#FF6B00]/30 text-[#FF6B00]'">
                                 <svg v-if="form.contactMethod === 'whatsapp'" class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                                </svg>
+                                <svg v-else class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                <span class="text-xs font-bold">{{ form.contactMethod === 'whatsapp' ? 'Direct to WhatsApp: +94710474475' : 'Direct to Email: sudarakanipun07@gmail.com' }}</span>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1.5">Your Name</label>
+                                <input v-model="form.name" type="text" placeholder="e.g. Alex" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00] outline-none transition-all text-sm font-medium" />
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1.5">Your Email</label>
+                                <input v-model="form.email" type="email" placeholder="e.g. alex@example.com" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00] outline-none transition-all text-sm font-medium" />
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1.5">Project Details (Optional)</label>
+                                <textarea v-model="form.details" placeholder="Briefly describe your project requirements..." rows="3" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00] outline-none transition-all text-sm font-medium resize-none"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Footer Actions -->
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                            <button v-if="currentStep > 1" @click="prevStep" class="px-5 py-2.5 text-xs font-bold text-gray-500 hover:text-[#111111] transition-colors flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+                                </svg>
+                                Back
+                            </button>
+                            <div v-else></div> <!-- Spacer -->
+
+                            <button v-if="currentStep < 3" @click="nextStep" class="px-6 py-2.5 bg-[#111111] text-white text-xs font-bold rounded-full hover:bg-[#FF6B00] transition-colors flex items-center gap-2 shadow-md hover:-translate-y-0.5">
+                                Continue
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                            
+                            <button v-else @click="submitForm" class="px-6 py-2.5 text-white text-xs font-bold rounded-full transition-colors flex items-center gap-2 shadow-md hover:-translate-y-0.5" :class="form.contactMethod === 'whatsapp' ? 'bg-[#25D366] hover:bg-[#20b958]' : 'bg-[#FF6B00] hover:bg-[#e66000]'">
+                                <svg v-if="form.contactMethod === 'whatsapp'" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                                 </svg>
                                 <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
                                 {{ form.contactMethod === 'whatsapp' ? 'Send via WhatsApp' : 'Send via Email' }}
                             </button>
@@ -655,10 +696,10 @@ const form = ref({
 });
 
 const servicesList = [
-    { name: 'Web Development', icon: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>' },
-    { name: 'Mobile App Dev', icon: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>' },
-    { name: 'UI/UX Design', icon: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>' },
-    { name: 'Full Stack Solution', icon: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>' }
+    { name: 'Web Development', icon: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>' },
+    { name: 'Mobile App Dev', icon: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>' },
+    { name: 'UI/UX Design', icon: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>' },
+    { name: 'Full Stack Solution', icon: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>' }
 ];
 
 const timelineList = ['< 1 month', '1-3 months', '> 3 months'];
@@ -670,7 +711,6 @@ const prevStep = () => { if (currentStep.value > 1) currentStep.value--; };
 
 const submitForm = () => {
     const msg = `Hello Nipun! I'm interested in starting a project.\n\n*Service:* ${form.value.service}\n*Timeline:* ${form.value.timeline}\n*Name:* ${form.value.name || 'Not Provided'}\n*Email:* ${form.value.email || 'Not Provided'}\n*Details:* ${form.value.details || 'N/A'}`;
-    
     if (form.value.contactMethod === 'whatsapp') {
         window.open(`https://wa.me/94710474475?text=${encodeURIComponent(msg)}`, '_blank');
     } else {
@@ -682,7 +722,6 @@ const submitForm = () => {
 const submitFooterForm = () => {
     const msg = `Hello Nipun!\n\n*Name:* ${form.value.name || 'Not Provided'}\n*Email:* ${form.value.email || 'Not Provided'}\n*Message:* ${form.value.details || 'N/A'}`;
     window.open(`mailto:sudarakanipun07@gmail.com?subject=New Contact Message&body=${encodeURIComponent(msg)}`, '_blank');
-    
     form.value.name = '';
     form.value.email = '';
     form.value.details = '';
@@ -713,8 +752,8 @@ const projects = ref([
         tools: 'Vue & Laravel',
         link: 'https://pet-connect-production-944c.up.railway.app',
         icons: [
-            '<svg viewBox="0 0 24 24" fill="#FF2D20"><path d="M23.3 8.3l-10-5.8c-.8-.5-1.8-.5-2.6 0l-10 5.8c-.8.5-1.3 1.4-1.3 2.3v11.6l5.2-3v-7c0-.2.1-.3.3-.4l6.1-3.5c.2-.1.5-.1.7 0l5.8 3.4v6.8l5.2 3V10.6c0-1-.5-1.8-1.3-2.3z"/></svg>',
-            '<svg viewBox="0 0 256 221" fill="#41B883"><path d="M204.8 0H256L128 220.8L0 0H51.2L128 132.48L204.8 0Z"/></svg>'
+            '<svg viewBox="0 0 24 24" fill="#FF2D20"><path d="M23.3 8.3l-10-5.8c-.8-.5-1.8-.5-2.6 0l-10 5.8c-.8.5-1.3 1.4-1.3 2.3v11.6l5.2-3v-7c0-.2.1-.3.3-.4l6.1-3.5c.2-.1.5-.1.7 0l5.8 3.4v6.8l5.2 3V10.6c0-1-.5-1.8-1.3-2.3z" /></svg>',
+            '<svg viewBox="0 0 256 221" fill="#41B883"><path d="M204.8 0H256L128 220.8L0 0H51.2L128 132.48L204.8 0Z" /></svg>'
         ]
     },
     {
@@ -727,13 +766,12 @@ const projects = ref([
         tools: 'JS & MySQL',
         link: '#',
         icons: [
-            '<svg viewBox="0 0 24 24" fill="#F7DF1E"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 15.46c-1.04-.3-1.63-.98-1.74-2.02h-2.9c.14 2.29 1.7 3.96 4.63 3.96 2.76 0 4.25-1.4 4.25-3.32 0-2.22-1.68-2.92-4.14-3.5-1.92-.46-2.38-.85-2.38-1.54 0-.75.7-1.3 1.95-1.3 1.34 0 2.05.6 2.14 1.54h2.86c-.1-2.08-1.57-3.52-5-3.52-2.73 0-4.8 1.4-4.8 3.5 0 2.1 1.63 2.78 4.2 3.39 1.83.43 2.34.87 2.34 1.59 0 .86-.82 1.35-2.08 1.35zM15 17.5V3h3v14.5c0 2.82-1.92 4.5-4.85 4.5-2.82 0-4.66-1.54-4.85-3.96h2.95c.1 1.25.96 1.73 1.9 1.73 1.2 0 1.85-.62 1.85-2.27z"/></svg>',
-            '<svg viewBox="0 0 24 24" fill="#4479A1"><path d="M12 2.2c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm4.5 14.5l-2.5-1.5-2.5 1.5.5-2.8-2-1.9 2.8-.4 1.2-2.5 1.2 2.5 2.8.4-2 1.9.5 2.8z"/></svg>'
+            '<svg viewBox="0 0 24 24" fill="#F7DF1E"><path d="M0 0h24v24H0V0z" fill="none" /><path d="M6 15.46c-1.04-.3-1.63-.98-1.74-2.02h-2.9c.14 2.29 1.7 3.96 4.63 3.96 2.76 0 4.25-1.4 4.25-3.32 0-2.22-1.68-2.92-4.14-3.5-1.92-.46-2.38-.85-2.38-1.54 0-.75.7-1.3 1.95-1.3 1.34 0 2.05.6 2.14 1.54h2.86c-.1-2.08-1.57-3.52-5-3.52-2.73 0-4.8 1.4-4.8 3.5 0 2.1 1.63 2.78 4.2 3.39 1.83.43 2.34.87 2.34 1.59 0 .86-.82 1.35-2.08 1.35zM15 17.5V3h3v14.5c0 2.82-1.92 4.5-4.85 4.5-2.82 0-4.66-1.54-4.85-3.96h2.95c.1 1.25.96 1.73 1.9 1.73 1.2 0 1.85-.62 1.85-2.27z" /></svg>',
+            '<svg viewBox="0 0 24 24" fill="#4479A1"><path d="M12 2.2c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm4.5 14.5l-2.5-1.5-2.5 1.5.5-2.8-2-1.9 2.8-.4 1.2-2.5 1.2 2.5 2.8.4-2 1.9.5 2.8z" /></svg>'
         ]
     }
 ]);
 
-// Filtered Projects Logic
 const filteredProjects = computed(() => {
     if (activeCategory.value === 'All Projects') {
         return projects.value;
@@ -743,25 +781,25 @@ const filteredProjects = computed(() => {
 
 // Technologies Details for the Marquee
 const row1 = [
-    { name: 'JavaScript', svg: `<svg fill="#F7DF1E" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 15.46c-1.04-.3-1.63-.98-1.74-2.02h-2.9c.14 2.29 1.7 3.96 4.63 3.96 2.76 0 4.25-1.4 4.25-3.32 0-2.22-1.68-2.92-4.14-3.5-1.92-.46-2.38-.85-2.38-1.54 0-.75.7-1.3 1.95-1.3 1.34 0 2.05.6 2.14 1.54h2.86c-.1-2.08-1.57-3.52-5-3.52-2.73 0-4.8 1.4-4.8 3.5 0 2.1 1.63 2.78 4.2 3.39 1.83.43 2.34.87 2.34 1.59 0 .86-.82 1.35-2.08 1.35zM15 17.5V3h3v14.5c0 2.82-1.92 4.5-4.85 4.5-2.82 0-4.66-1.54-4.85-3.96h2.95c.1 1.25.96 1.73 1.9 1.73 1.2 0 1.85-.62 1.85-2.27z"/></svg>` },
-    { name: 'Vue.js', svg: `<svg viewBox="0 0 256 221" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M204.8 0H256L128 220.8L0 0H51.2L128 132.48L204.8 0Z" fill="#41B883"/><path d="M204.8 0H153.6L128 44.16L102.4 0H51.2L128 132.48L204.8 0Z" fill="#34495E"/></svg>` },
-    { name: 'Tailwind CSS', svg: `<svg fill="#38BDF8" viewBox="0 0 54 33"><path d="M27 0C21.6 0 18.225 2.7 16.875 8.1 19.575 5.4 22.95 4.725 27 5.4c2.25.375 3.863 2.063 5.625 3.938C35.213 12.188 38.363 15.3 40.5 15.3c5.4 0 8.775-2.7 10.125-8.1-2.7 2.7-6.075 3.375-10.125 2.7-2.25-.375-3.863-2.063-5.625-3.938C32.287 3.113 29.137 0 27 0zM13.5 16.2C8.1 16.2 4.725 18.9 3.375 24.3c2.7-2.7 6.075-3.375 10.125-2.7 2.25.375 3.863 2.063 5.625 3.938C21.713 28.388 24.863 31.5 27 31.5c5.4 0 8.775-2.7 10.125-8.1-2.7 2.7-6.075 3.375-10.125 2.7-2.25-.375-3.863-2.063-5.625-3.938C18.787 19.313 15.637 16.2 13.5 16.2z"/></svg>` },
-    { name: 'HTML5', svg: `<svg fill="#E34F26" viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.16l-.3 3.357H8.64l.14 1.583h9.2l-.76 8.523-5.24 1.458-5.24-1.458-.33-3.708h3.38l.17 1.833 2.01.558 2.02-.558.33-3.666H4.8l.58-6.417h13.21z"/></svg>` },
-    { name: 'CSS3', svg: `<svg fill="#1572B6" viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm17.09 4.16l-.3 3.357H8.64l.14 1.583h9.2l-.76 8.523-5.24 1.458-5.24-1.458-.33-3.708h3.38l.17 1.833 2.01.558 2.02-.558.33-3.666H4.8l.58-6.417h13.21z"/></svg>` },
+    { name: 'JavaScript', svg: '<svg fill="#F7DF1E" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none" /><path d="M6 15.46c-1.04-.3-1.63-.98-1.74-2.02h-2.9c.14 2.29 1.7 3.96 4.63 3.96 2.76 0 4.25-1.4 4.25-3.32 0-2.22-1.68-2.92-4.14-3.5-1.92-.46-2.38-.85-2.38-1.54 0-.75.7-1.3 1.95-1.3 1.34 0 2.05.6 2.14 1.54h2.86c-.1-2.08-1.57-3.52-5-3.52-2.73 0-4.8 1.4-4.8 3.5 0 2.1 1.63 2.78 4.2 3.39 1.83.43 2.34.87 2.34 1.59 0 .86-.82 1.35-2.08 1.35zM15 17.5V3h3v14.5c0 2.82-1.92 4.5-4.85 4.5-2.82 0-4.66-1.54-4.85-3.96h2.95c.1 1.25.96 1.73 1.9 1.73 1.2 0 1.85-.62 1.85-2.27z" /></svg>' },
+    { name: 'Vue.js', svg: '<svg viewBox="0 0 256 221" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M204.8 0H256L128 220.8L0 0H51.2L128 132.48L204.8 0Z" fill="#41B883" /><path d="M204.8 0H153.6L128 44.16L102.4 0H51.2L128 132.48L204.8 0Z" fill="#34495E" /></svg>' },
+    { name: 'Tailwind CSS', svg: '<svg fill="#38BDF8" viewBox="0 0 54 33"><path d="M27 0C21.6 0 18.225 2.7 16.875 8.1 19.575 5.4 22.95 4.725 27 5.4c2.25.375 3.863 2.063 5.625 3.938C35.213 12.188 38.363 15.3 40.5 15.3c5.4 0 8.775-2.7 10.125-8.1-2.7 2.7-6.075 3.375-10.125 2.7-2.25-.375-3.863-2.063-5.625-3.938C32.287 3.113 29.137 0 27 0zM13.5 16.2C8.1 16.2 4.725 18.9 3.375 24.3c2.7-2.7 6.075-3.375 10.125-2.7 2.25.375 3.863 2.063 5.625 3.938C21.713 28.388 24.863 31.5 27 31.5c5.4 0 8.775-2.7 10.125-8.1-2.7 2.7-6.075 3.375-10.125 2.7-2.25-.375-3.863-2.063-5.625-3.938C18.787 19.313 15.637 16.2 13.5 16.2z" /></svg>' },
+    { name: 'HTML5', svg: '<svg fill="#E34F26" viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.16l-.3 3.357H8.64l.14 1.583h9.2l-.76 8.523-5.24 1.458-5.24-1.458-.33-3.708h3.38l.17 1.833 2.01.558 2.02-.558.33-3.666H4.8l.58-6.417h13.21z" /></svg>' },
+    { name: 'CSS3', svg: '<svg fill="#1572B6" viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm17.09 4.16l-.3 3.357H8.64l.14 1.583h9.2l-.76 8.523-5.24 1.458-5.24-1.458-.33-3.708h3.38l.17 1.833 2.01.558 2.02-.558.33-3.666H4.8l.58-6.417h13.21z" /></svg>' },
 ];
 const row2 = [
-    { name: 'PHP', svg: `<svg fill="#777BB4" viewBox="0 0 24 24"><path d="M12 2C5.373 2 0 6.477 0 12s5.373 10 12 10 12-4.477 12-10S18.627 2 12 2zm-1.8 13.5h-1.6l1-5h2.8c1.3 0 2.2.8 2.2 2s-.9 2-2.2 2h-1.2l-.2 1zM20.2 11c0 1.2-.9 2-2.2 2h-1.2l-.5 2.5h-1.6l1.4-7h2.8c1.3 0 2.2.8 2.2 2.5zm-14.7.5h-1.2l-.5 2.5H2.2l1.4-7h2.8c1.3 0 2.2.8 2.2 2s-.9 2.5-2.2 2.5zm11.7-1h-1l-.4 2h1c.5 0 .8-.3.8-.8s-.3-1.2-.8-1.2zm-12.8 0h-1l-.4 2h1c.5 0 .8-.3.8-.8s-.3-1.2-.8-1.2z"/></svg>` },
-    { name: 'Laravel', svg: `<svg fill="#FF2D20" viewBox="0 0 24 24"><path d="M23.3 8.3l-10-5.8c-.8-.5-1.8-.5-2.6 0l-10 5.8c-.8.5-1.3 1.4-1.3 2.3v11.6l5.2-3v-7c0-.2.1-.3.3-.4l6.1-3.5c.2-.1.5-.1.7 0l5.8 3.4v6.8l5.2 3V10.6c0-1-.5-1.8-1.3-2.3z"/></svg>` },
-    { name: 'MySQL', svg: `<svg fill="#4479A1" viewBox="0 0 24 24"><path d="M12 2.2c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm4.5 14.5l-2.5-1.5-2.5 1.5.5-2.8-2-1.9 2.8-.4 1.2-2.5 1.2 2.5 2.8.4-2 1.9.5 2.8z"/></svg>` },
-    { name: 'Docker', svg: `<svg fill="#2496ED" viewBox="0 0 24 24"><path d="M2.6 13.9l.4 1.5c2 4.1 6.8 6.4 11.2 5 2.5-.8 4.6-2.5 5.8-4.8l-1.3-1c-.9 1.8-2.6 3.1-4.7 3.7-3.4 1-7.1-.6-8.6-3.8l-2.8-.6zm18.3-4c-.2-.6-.8-1-1.5-1h-2.5c-.8 0-1.5-1h-2.5c-.8 0-1.5.7-1.5 1.5S16.1 12 16.9 12h2.5c.8 0 1.5-.7 1.5-1.5s-.1-1-.4-1.5zm-5.7.5H12c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5h3.2c.8 0 1.5-.7 1.5-1.5s-.7-1.5-1.5-1.5z"/></svg>` },
-    { name: 'GitHub', svg: `<svg fill="#181717" viewBox="0 0 24 24"><path d="M12 .3a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 016 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.7.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0012 .3z"/></svg>` },
+    { name: 'PHP', svg: '<svg fill="#777BB4" viewBox="0 0 24 24"><path d="M12 2C5.373 2 0 6.477 0 12s5.373 10 12 10 12-4.477 12-10S18.627 2 12 2zm-1.8 13.5h-1.6l1-5h2.8c1.3 0 2.2.8 2.2 2s-.9 2-2.2 2h-1.2l-.2 1zM20.2 11c0 1.2-.9 2-2.2 2h-1.2l-.5 2.5h-1.6l1.4-7h2.8c1.3 0 2.2.8 2.2 2.5zm-14.7.5h-1.2l-.5 2.5H2.2l1.4-7h2.8c1.3 0 2.2.8 2.2 2s-.9 2.5-2.2 2.5zm11.7-1h-1l-.4 2h1c.5 0 .8-.3.8-.8s-.3-1.2-.8-1.2zm-12.8 0h-1l-.4 2h1c.5 0 .8-.3.8-.8s-.3-1.2-.8-1.2z" /></svg>' },
+    { name: 'Laravel', svg: '<svg fill="#FF2D20" viewBox="0 0 24 24"><path d="M23.3 8.3l-10-5.8c-.8-.5-1.8-.5-2.6 0l-10 5.8c-.8.5-1.3 1.4-1.3 2.3v11.6l5.2-3v-7c0-.2.1-.3.3-.4l6.1-3.5c.2-.1.5-.1.7 0l5.8 3.4v6.8l5.2 3V10.6c0-1-.5-1.8-1.3-2.3z" /></svg>' },
+    { name: 'MySQL', svg: '<svg fill="#4479A1" viewBox="0 0 24 24"><path d="M12 2.2c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm4.5 14.5l-2.5-1.5-2.5 1.5.5-2.8-2-1.9 2.8-.4 1.2-2.5 1.2 2.5 2.8.4-2 1.9.5 2.8z" /></svg>' },
+    { name: 'Docker', svg: '<svg fill="#2496ED" viewBox="0 0 24 24"><path d="M2.6 13.9l.4 1.5c2 4.1 6.8 6.4 11.2 5 2.5-.8 4.6-2.5 5.8-4.8l-1.3-1c-.9 1.8-2.6 3.1-4.7 3.7-3.4 1-7.1-.6-8.6-3.8l-2.8-.6zm18.3-4c-.2-.6-.8-1-1.5-1h-2.5c-.8 0-1.5-1h-2.5c-.8 0-1.5.7-1.5 1.5S16.1 12 16.9 12h2.5c.8 0 1.5-.7 1.5-1.5s-.1-1-.4-1.5zm-5.7.5H12c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5h3.2c.8 0 1.5-.7 1.5-1.5s-.7-1.5-1.5-1.5z" /></svg>' },
+    { name: 'GitHub', svg: '<svg fill="#181717" viewBox="0 0 24 24"><path d="M12 .3a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 016 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.7.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0012 .3z" /></svg>' },
 ];
 const row3 = [
-    { name: 'MongoDB', svg: `<svg fill="#47A248" viewBox="0 0 24 24"><path d="M11.6 1.1A10.3 10.3 0 007 10.5c0 3.7 2 6.8 4.6 8.5v3.9s.4.1.6 0v-4c2.5-1.6 4.4-4.8 4.4-8.4 0-4-3-8-5-9.4z"/></svg>` },
-    { name: 'Linux', svg: `<svg fill="#FCC624" viewBox="0 0 24 24"><path d="M12 2C8 2 5 7 5 13s2.5 9 7 9 7-3 7-9-3-11-7-11z"/></svg>` },
-    { name: 'Adobe XD', svg: `<svg fill="#FF61F6" viewBox="0 0 24 24"><path d="M5 2h14c1.7 0 3 1.3 3 3v14c0 1.7-1.3 3-3 3H5c-1.7 0-3-1.3-3-3V5c0-1.7 1.3-3 3-3zm4.5 12.8L6.2 9h2.3l2 3.5 2-3.5h2.3l-3.3 5.8 3.4 5.7H13l-2.2-4-2.2 4H6.2l3.3-5.7zm4.3 2.2h2.5c2.3 0 4.2-1.8 4.2-4.2S18.1 8.6 15.8 8.6h-2v8.4zm2-6.5h.5c1.2 0 2.2 1 2.2 2.3s-1 2.3-2.2 2.3h-.5v-4.6z"/></svg>` },
-    { name: 'Three.js', svg: `<svg fill="#000000" viewBox="0 0 24 24"><path d="M12 2.1L2.3 7.7l9.7 5.6 9.7-5.6L12 2.1zm0 12.8l-8.5-4.9v9.8l8.5 4.9V14.9zm1.2 0v9.8l8.5-4.9V10l-8.5 4.9z"/></svg>` },
-    { name: 'Unreal Engine', svg: `<svg fill="#313131" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.8 14H13v-5c0-1.1-.9-2-2-2s-2 .9-2 2v5H6.2V9.8h2.8v1.3c.6-.8 1.6-1.3 2.7-1.3 2.3 0 4.1 1.9 4.1 4.2V16z"/></svg>` },
+    { name: 'MongoDB', svg: '<svg fill="#47A248" viewBox="0 0 24 24"><path d="M11.6 1.1A10.3 10.3 0 007 10.5c0 3.7 2 6.8 4.6 8.5v3.9s.4.1.6 0v-4c2.5-1.6 4.4-4.8 4.4-8.4 0-4-3-8-5-9.4z" /></svg>' },
+    { name: 'Linux', svg: '<svg fill="#FCC624" viewBox="0 0 24 24"><path d="M12 2C8 2 5 7 5 13s2.5 9 7 9 7-3 7-9-3-11-7-11z" /></svg>' },
+    { name: 'Adobe XD', svg: '<svg fill="#FF61F6" viewBox="0 0 24 24"><path d="M5 2h14c1.7 0 3 1.3 3 3v14c0 1.7-1.3 3-3 3H5c-1.7 0-3-1.3-3-3V5c0-1.7 1.3-3 3-3zm4.5 12.8L6.2 9h2.3l2 3.5 2-3.5h2.3l-3.3 5.8 3.4 5.7H13l-2.2-4-2.2 4H6.2l3.3-5.7zm4.3 2.2h2.5c2.3 0 4.2-1.8 4.2-4.2S18.1 8.6 15.8 8.6h-2v8.4zm2-6.5h.5c1.2 0 2.2 1 2.2 2.3s-1 2.3-2.2 2.3h-.5v-4.6z" /></svg>' },
+    { name: 'Three.js', svg: '<svg fill="#000000" viewBox="0 0 24 24"><path d="M12 2.1L2.3 7.7l9.7 5.6 9.7-5.6L12 2.1zm0 12.8l-8.5-4.9v9.8l8.5 4.9V14.9zm1.2 0v9.8l8.5-4.9V10l-8.5 4.9z" /></svg>' },
+    { name: 'Unreal Engine', svg: '<svg fill="#313131" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.8 14H13v-5c0-1.1-.9-2-2-2s-2 .9-2 2v5H6.2V9.8h2.8v1.3c.6-.8 1.6-1.3 2.7-1.3 2.3 0 4.1 1.9 4.1 4.2V16z" /></svg>' },
 ];
 
 const isAtAboutSection = computed(() => {
