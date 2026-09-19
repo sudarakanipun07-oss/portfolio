@@ -7,16 +7,16 @@
                  :class="isSidebarOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0'"
                  @click="isSidebarOpen = false"></div>
             
-            <div class="absolute top-0 right-0 w-72 md:w-80 h-full bg-transparent backdrop-blur-xl border-l border-white/20 shadow-2xl transition-transform duration-500 ease-in-out pointer-events-auto flex flex-col p-10"
+            <div class="absolute top-0 right-0 w-[80%] max-w-[320px] md:w-80 h-full bg-transparent backdrop-blur-xl border-l border-white/20 shadow-2xl transition-transform duration-500 ease-in-out pointer-events-auto flex flex-col p-8 md:p-10"
                  :class="isSidebarOpen ? 'translate-x-0' : 'translate-x-full'">
                 
-                <button @click="isSidebarOpen = false" class="self-end mb-12 hover:text-[#FF6B00] transition-colors duration-300" :class="isDarkBg ? 'text-white' : 'text-[#111111]'">
+                <button @click="isSidebarOpen = false" class="self-end mb-10 md:mb-12 hover:text-[#FF6B00] transition-colors duration-300" :class="isDarkBg ? 'text-white' : 'text-[#111111]'">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
                 
-                <div class="flex flex-col gap-8 text-lg font-black tracking-widest uppercase transition-colors duration-300" :class="isDarkBg ? 'text-white' : 'text-[#111111]'">
+                <div class="flex flex-col gap-6 md:gap-8 text-base md:text-lg font-black tracking-widest uppercase transition-colors duration-300" :class="isDarkBg ? 'text-white' : 'text-[#111111]'">
                     <a href="#" @click.prevent="scrollTo('home')" class="hover:text-[#FF6B00] transition-colors relative group w-max">Home<span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-[#FF6B00] transition-all duration-300 group-hover:w-full"></span></a>
                     <a href="#" @click.prevent="scrollTo('about')" class="hover:text-[#FF6B00] transition-colors relative group w-max">About Me<span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-[#FF6B00] transition-all duration-300 group-hover:w-full"></span></a>
                     <a href="#" @click.prevent="scrollTo('projects')" class="hover:text-[#FF6B00] transition-colors relative group w-max">Projects<span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-[#FF6B00] transition-all duration-300 group-hover:w-full"></span></a>
@@ -26,7 +26,7 @@
         </div>
 
         <!-- MAIN NAVBAR -->
-        <nav class="fixed top-0 left-0 right-0 z-[55] flex items-start justify-between px-6 md:px-12 max-w-[1600px] mx-auto w-full pointer-events-none">
+        <nav class="fixed top-0 left-0 right-0 z-[55] flex items-start justify-between px-4 sm:px-6 md:px-12 max-w-[1600px] mx-auto w-full pointer-events-none">
             
             <div class="hidden xl:block w-[180px]"></div>
             <div class="xl:hidden w-12"></div>
@@ -52,16 +52,16 @@
                 </div>
             </div>
 
-            <div class="flex items-start gap-4 pointer-events-auto mt-4 md:mt-0 transition-transform duration-700 w-[180px] justify-end" :class="{ 'md:mt-0': !isScrolled, 'md:translate-y-3': isScrolled }">
+            <div class="flex items-start gap-3 md:gap-4 pointer-events-auto mt-2 md:mt-0 transition-transform duration-700 w-auto md:w-[180px] justify-end" :class="{ 'md:mt-0': !isScrolled, 'md:translate-y-3': isScrolled }">
                 
-                <div class="flex flex-col items-center origin-top transition-transform duration-700" :class="{ 'animate-swing': isScrolled }" style="animation-delay: 0.3s; animation-duration: 2.8s;">
-                    <div class="w-[1.5px] transition-all duration-700 ease-bounce" 
+                <div class="flex flex-col items-center origin-top transition-transform duration-700" :class="{ 'md:animate-swing': isScrolled }" style="animation-delay: 0.3s; animation-duration: 2.8s;">
+                    <div class="hidden md:block w-[1.5px] transition-all duration-700 ease-bounce" 
                          :class="[isScrolled ? 'opacity-100' : 'h-0 opacity-0', isAtAboutSection ? 'bg-white/80' : 'bg-[#111111]/40']"
                          :style="isScrolled ? 'height: calc(var(--nav-string-height, 40px) + env(safe-area-inset-top));' : ''"></div>
                          
-                    <div class="w-2 h-2 rounded-full bg-[#FF6B00] -mt-[1px] z-10 transition-all duration-700 ease-bounce" :class="isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-0'"></div>
+                    <div class="hidden md:block w-2 h-2 rounded-full bg-[#FF6B00] -mt-[1px] z-10 transition-all duration-700 ease-bounce" :class="isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-0'"></div>
                     
-                    <button @click="openModal" class="bg-[#111111] text-white text-[10px] md:text-xs font-black tracking-[0.15em] px-5 md:px-6 py-2.5 md:py-3.5 rounded-full flex items-center gap-2 hover:bg-[#FF6B00] hover:-translate-y-0.5 transition-all shadow-lg border border-white/10 mt-1">
+                    <button @click="openModal" class="bg-[#111111] text-white text-[10px] md:text-xs font-black tracking-[0.15em] px-4 md:px-6 py-2.5 md:py-3.5 rounded-full flex items-center gap-2 hover:bg-[#FF6B00] md:hover:-translate-y-0.5 transition-all shadow-lg border border-white/10 mt-1">
                         HIRE NOW
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 19L19 5M19 5v10M19 5H9" />
@@ -69,14 +69,14 @@
                     </button>
                 </div>
 
-                <div class="flex flex-col items-center origin-top transition-transform duration-700" :class="{ 'animate-swing': isScrolled }" style="animation-delay: 0.5s; animation-duration: 3.2s;">
-                    <div class="w-[1.5px] transition-all duration-700 ease-bounce" 
+                <div class="flex flex-col items-center origin-top transition-transform duration-700" :class="{ 'md:animate-swing': isScrolled }" style="animation-delay: 0.5s; animation-duration: 3.2s;">
+                    <div class="hidden md:block w-[1.5px] transition-all duration-700 ease-bounce" 
                          :class="[isScrolled ? 'opacity-100' : 'h-0 opacity-0', isAtAboutSection ? 'bg-white/80' : 'bg-[#111111]/40']"
                          :style="isScrolled ? 'height: calc(var(--nav-string-height, 40px) + env(safe-area-inset-top));' : ''"></div>
                          
-                    <div class="w-2 h-2 rounded-full bg-[#FF6B00] -mt-[1px] z-10 transition-all duration-700 ease-bounce" :class="isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-0'"></div>
+                    <div class="hidden md:block w-2 h-2 rounded-full bg-[#FF6B00] -mt-[1px] z-10 transition-all duration-700 ease-bounce" :class="isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-0'"></div>
                     
-                    <button @click="isSidebarOpen = true" class="transition-all duration-700 ease-bounce flex items-center justify-center bg-white text-[#111111] p-3 rounded-full shadow-lg border border-gray-100 hover:bg-[#FF6B00] hover:text-white mt-1">
+                    <button @click="isSidebarOpen = true" class="transition-all duration-700 ease-bounce flex items-center justify-center bg-white text-[#111111] p-2.5 md:p-3 rounded-full shadow-lg border border-gray-100 hover:bg-[#FF6B00] hover:text-white mt-1">
                         <svg class="transition-all duration-700 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
@@ -87,64 +87,64 @@
 
         <!-- 2. HERO SECTION -->
         <section id="home" class="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">
-            <div class="absolute w-full top-[35%] -translate-y-1/2 left-0 z-[15] pointer-events-none flex justify-center items-center h-[2px]">
-                <div class="absolute right-1/2 w-[35vw] md:w-[42vw] h-[1.5px] bg-white opacity-70 animate-line-left shadow-[0_0_8px_rgba(255,255,255,0.8)]"></div>
-                <div class="absolute left-1/2 w-[35vw] md:w-[42vw] h-[1.5px] bg-white opacity-70 animate-line-right shadow-[0_0_8px_rgba(255,255,255,0.8)]"></div>
+            <div class="absolute w-full top-[30%] md:top-[35%] -translate-y-1/2 left-0 z-[15] pointer-events-none flex justify-center items-center h-[2px]">
+                <div class="absolute right-1/2 w-[45vw] md:w-[42vw] h-[1.5px] bg-white opacity-70 animate-line-left shadow-[0_0_8px_rgba(255,255,255,0.8)]"></div>
+                <div class="absolute left-1/2 w-[45vw] md:w-[42vw] h-[1.5px] bg-white opacity-70 animate-line-right shadow-[0_0_8px_rgba(255,255,255,0.8)]"></div>
             </div>
 
             <div class="absolute inset-0 z-10 pointer-events-none select-none">
-                <div class="absolute left-[5%] md:left-[8%] top-[35%] -translate-y-1/2 text-left">
-                    <transition-group name="slow-sort" tag="h2" class="text-3xl md:text-4xl font-black tracking-tighter text-[#111111] uppercase whitespace-nowrap flex">
+                <div class="absolute left-[4%] sm:left-[5%] md:left-[8%] top-[30%] md:top-[35%] -translate-y-1/2 text-left scale-[0.8] sm:scale-100 origin-left">
+                    <transition-group name="slow-sort" tag="h2" class="text-xl sm:text-3xl md:text-4xl font-black tracking-tighter text-[#111111] uppercase whitespace-nowrap flex">
                         <span v-for="letter in leftLine1" :key="letter.id" class="inline-block letter-fly" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300" :class="{ 'animate-wiggle-infinite text-[#FF6B00] scale-[1.15] -translate-y-2': letter.isHovered, 'animate-confused text-[#FF6B00]': letter.isConfused, 'animate-happy-jump text-[#FF6B00]': letter.isHappy }">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
-                    <transition-group name="slow-sort" tag="h2" class="text-3xl md:text-4xl font-black tracking-tighter text-[#111111] uppercase whitespace-nowrap flex mt-[-5px]">
+                    <transition-group name="slow-sort" tag="h2" class="text-xl sm:text-3xl md:text-4xl font-black tracking-tighter text-[#111111] uppercase whitespace-nowrap flex mt-[-5px]">
                         <span v-for="letter in leftLine2" :key="letter.id" class="inline-block letter-fly" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300" :class="{ 'animate-wiggle-infinite text-[#FF6B00] scale-[1.15] -translate-y-2': letter.isHovered, 'animate-confused text-[#FF6B00]': letter.isConfused, 'animate-happy-jump text-[#FF6B00]': letter.isHappy }">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
                 </div>
 
-                <div class="absolute right-[5%] md:right-[8%] top-[35%] -translate-y-1/2 text-right flex flex-col items-end">
-                    <transition-group name="slow-sort" tag="h2" class="text-3xl md:text-5xl font-black tracking-tighter text-[#111111] uppercase whitespace-nowrap flex">
+                <div class="absolute right-[4%] sm:right-[5%] md:right-[8%] top-[30%] md:top-[35%] -translate-y-1/2 text-right flex flex-col items-end scale-[0.8] sm:scale-100 origin-right">
+                    <transition-group name="slow-sort" tag="h2" class="text-2xl sm:text-3xl md:text-5xl font-black tracking-tighter text-[#111111] uppercase whitespace-nowrap flex">
                         <span v-for="letter in rightLine1" :key="letter.id" class="inline-block letter-fly" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300" :class="{ 'animate-wiggle-infinite text-[#FF6B00] scale-[1.15] -translate-y-2': letter.isHovered, 'animate-confused text-[#FF6B00]': letter.isConfused, 'animate-happy-jump text-[#FF6B00]': letter.isHappy }">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
-                    <transition-group name="slow-sort" tag="h2" class="text-3xl md:text-5xl font-black tracking-tighter text-[#111111] uppercase whitespace-nowrap flex mt-[-5px]">
+                    <transition-group name="slow-sort" tag="h2" class="text-2xl sm:text-3xl md:text-5xl font-black tracking-tighter text-[#111111] uppercase whitespace-nowrap flex mt-[-5px]">
                         <span v-for="letter in rightLine2" :key="letter.id" class="inline-block letter-fly" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300" :class="{ 'animate-wiggle-infinite text-[#FF6B00] scale-[1.15] -translate-y-2': letter.isHovered, 'animate-confused text-[#FF6B00]': letter.isConfused, 'animate-happy-jump text-[#FF6B00]': letter.isHappy }">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
                     <div class="mt-4 h-9"></div>
                 </div>
 
-                <div class="absolute w-full top-[68%] -translate-y-1/2 text-center flex flex-col items-center justify-center">
-                    <transition-group name="slow-sort" tag="h1" class="text-[10vw] font-black leading-[0.85] tracking-tighter uppercase whitespace-nowrap flex">
+                <div class="absolute w-full top-[68%] md:top-[68%] -translate-y-1/2 text-center flex flex-col items-center justify-center scale-[1.2] md:scale-100">
+                    <transition-group name="slow-sort" tag="h1" class="text-[14vw] md:text-[10vw] font-black leading-[0.85] tracking-tighter uppercase whitespace-nowrap flex">
                         <span v-for="letter in line1" :key="letter.id" class="inline-block letter-fly" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300" :class="{ 'animate-wiggle-infinite text-[#FF6B00] scale-[1.15] -translate-y-5': letter.isHovered, 'animate-confused text-[#FF6B00]': letter.isConfused, 'animate-happy-jump text-[#FF6B00]': letter.isHappy }">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
-                    <transition-group name="slow-sort" tag="h1" class="text-[10vw] font-black leading-[0.85] tracking-tighter uppercase whitespace-nowrap flex">
+                    <transition-group name="slow-sort" tag="h1" class="text-[14vw] md:text-[10vw] font-black leading-[0.85] tracking-tighter uppercase whitespace-nowrap flex">
                         <span v-for="letter in line2" :key="letter.id" class="inline-block letter-fly" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300" :class="{ 'animate-wiggle-infinite text-[#FF6B00] scale-[1.15] -translate-y-5': letter.isHovered, 'animate-confused text-[#FF6B00]': letter.isConfused, 'animate-happy-jump text-[#FF6B00]': letter.isHappy }">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
                 </div>
             </div>
 
-            <div class="absolute bottom-0 z-20 flex items-end justify-center w-full max-w-[1300px] h-[92vh] pointer-events-none">
-                <img src="/images/me.png" alt="Developer Hero" class="object-contain object-bottom w-full h-full drop-shadow-2xl scale-[1.25]" style="-webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%); mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);" />
+            <div class="absolute bottom-0 z-20 flex items-end justify-center w-full max-w-[1300px] h-[85vh] md:h-[92vh] pointer-events-none">
+                <img src="/images/me.png" alt="Developer Hero" class="object-contain object-bottom w-full h-full drop-shadow-2xl scale-[1.1] md:scale-[1.25]" style="-webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%); mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);" />
             </div>
 
             <div class="absolute inset-0 z-30 pointer-events-none select-none">
-                <div class="absolute left-[5%] md:left-[8%] top-[35%] -translate-y-1/2 text-left">
-                    <transition-group name="slow-sort" tag="h2" class="text-3xl md:text-4xl font-black tracking-tighter uppercase whitespace-nowrap flex">
+                <div class="absolute left-[4%] sm:left-[5%] md:left-[8%] top-[30%] md:top-[35%] -translate-y-1/2 text-left scale-[0.8] sm:scale-100 origin-left">
+                    <transition-group name="slow-sort" tag="h2" class="text-xl sm:text-3xl md:text-4xl font-black tracking-tighter uppercase whitespace-nowrap flex">
                         <span v-for="letter in leftLine1" :key="letter.id" class="inline-block letter-fly pointer-events-none" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300 pointer-events-auto cursor-pointer letter-front" :class="{ 'animate-wiggle-infinite scale-[1.15] -translate-y-2 is-active': letter.isHovered, 'animate-confused is-active': letter.isConfused, 'animate-happy-jump is-active': letter.isHappy }" @mouseenter="letter.isHovered = true" @mouseleave="letter.isHovered = false" @touchstart="letter.isHovered = true" @touchend="letter.isHovered = false">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
-                    <transition-group name="slow-sort" tag="h2" class="text-3xl md:text-4xl font-black tracking-tighter uppercase whitespace-nowrap flex mt-[-5px]">
+                    <transition-group name="slow-sort" tag="h2" class="text-xl sm:text-3xl md:text-4xl font-black tracking-tighter uppercase whitespace-nowrap flex mt-[-5px]">
                         <span v-for="letter in leftLine2" :key="letter.id" class="inline-block letter-fly pointer-events-none" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300 pointer-events-auto cursor-pointer letter-front" :class="{ 'animate-wiggle-infinite scale-[1.15] -translate-y-2 is-active': letter.isHovered, 'animate-confused is-active': letter.isConfused, 'animate-happy-jump is-active': letter.isHappy }" @mouseenter="letter.isHovered = true" @mouseleave="letter.isHovered = false" @touchstart="letter.isHovered = true" @touchend="letter.isHovered = false">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
                 </div>
 
-                <div class="absolute right-[5%] md:right-[8%] top-[35%] -translate-y-1/2 text-right flex flex-col items-end">
-                    <transition-group name="slow-sort" tag="h2" class="text-3xl md:text-5xl font-black tracking-tighter uppercase whitespace-nowrap flex">
+                <div class="absolute right-[4%] sm:right-[5%] md:right-[8%] top-[30%] md:top-[35%] -translate-y-1/2 text-right flex flex-col items-end scale-[0.8] sm:scale-100 origin-right">
+                    <transition-group name="slow-sort" tag="h2" class="text-2xl sm:text-3xl md:text-5xl font-black tracking-tighter uppercase whitespace-nowrap flex">
                         <span v-for="letter in rightLine1" :key="letter.id" class="inline-block letter-fly pointer-events-none" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300 pointer-events-auto cursor-pointer letter-front" :class="{ 'animate-wiggle-infinite scale-[1.15] -translate-y-2 is-active': letter.isHovered, 'animate-confused is-active': letter.isConfused, 'animate-happy-jump is-active': letter.isHappy }" @mouseenter="letter.isHovered = true" @mouseleave="letter.isHovered = false" @touchstart="letter.isHovered = true" @touchend="letter.isHovered = false">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
-                    <transition-group name="slow-sort" tag="h2" class="text-3xl md:text-5xl font-black tracking-tighter uppercase whitespace-nowrap flex mt-[-5px]">
+                    <transition-group name="slow-sort" tag="h2" class="text-2xl sm:text-3xl md:text-5xl font-black tracking-tighter uppercase whitespace-nowrap flex mt-[-5px]">
                         <span v-for="letter in rightLine2" :key="letter.id" class="inline-block letter-fly pointer-events-none" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300 pointer-events-auto cursor-pointer letter-front" :class="{ 'animate-wiggle-infinite scale-[1.15] -translate-y-2 is-active': letter.isHovered, 'animate-confused is-active': letter.isConfused, 'animate-happy-jump is-active': letter.isHappy }" @mouseenter="letter.isHovered = true" @mouseleave="letter.isHovered = false" @touchstart="letter.isHovered = true" @touchend="letter.isHovered = false">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
                     
-                    <a href="/Nipun_CV.pdf" download="Nipun_Sudaraka_CV.pdf" class="mt-4 px-6 py-2.5 text-xs font-black tracking-wider text-white uppercase transition-colors bg-[#111111] rounded hover:bg-[#FF6B00] opacity-0 anim-fade-in-cv pointer-events-auto shadow-[0_4px_15px_rgba(0,0,0,0.1)] hover:-translate-y-0.5 duration-300 flex items-center gap-2">
+                    <a href="/Nipun_CV.pdf" download="Nipun_Sudaraka_CV.pdf" class="mt-4 px-4 md:px-6 py-2 md:py-2.5 text-[10px] md:text-xs font-black tracking-wider text-white uppercase transition-colors bg-[#111111] rounded hover:bg-[#FF6B00] opacity-0 anim-fade-in-cv pointer-events-auto shadow-[0_4px_15px_rgba(0,0,0,0.1)] hover:-translate-y-0.5 duration-300 flex items-center gap-2">
                         Download CV
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -152,17 +152,17 @@
                     </a>
                 </div>
 
-                <div class="absolute w-full top-[68%] -translate-y-1/2 text-center flex flex-col items-center justify-center">
-                    <transition-group name="slow-sort" tag="h1" class="text-[10vw] font-black leading-[0.85] tracking-tighter uppercase whitespace-nowrap flex">
+                <div class="absolute w-full top-[68%] md:top-[68%] -translate-y-1/2 text-center flex flex-col items-center justify-center scale-[1.2] md:scale-100">
+                    <transition-group name="slow-sort" tag="h1" class="text-[14vw] md:text-[10vw] font-black leading-[0.85] tracking-tighter uppercase whitespace-nowrap flex">
                         <span v-for="letter in line1" :key="letter.id" class="inline-block letter-fly pointer-events-none" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300 pointer-events-auto cursor-pointer letter-front" :class="{ 'animate-wiggle-infinite scale-[1.15] -translate-y-5 is-active': letter.isHovered, 'animate-confused is-active': letter.isConfused, 'animate-happy-jump is-active': letter.isHappy }" @mouseenter="letter.isHovered = true" @mouseleave="letter.isHovered = false" @touchstart="letter.isHovered = true" @touchend="letter.isHovered = false">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
-                    <transition-group name="slow-sort" tag="h1" class="text-[10vw] font-black leading-[0.85] tracking-tighter uppercase whitespace-nowrap flex">
+                    <transition-group name="slow-sort" tag="h1" class="text-[14vw] md:text-[10vw] font-black leading-[0.85] tracking-tighter uppercase whitespace-nowrap flex">
                         <span v-for="letter in line2" :key="letter.id" class="inline-block letter-fly pointer-events-none" :style="`transform: translate(${letter.x}px, ${letter.y}px);`"><span class="inline-block transition-all duration-300 pointer-events-auto cursor-pointer letter-front" :class="{ 'animate-wiggle-infinite scale-[1.15] -translate-y-5 is-active': letter.isHovered, 'animate-confused is-active': letter.isConfused, 'animate-happy-jump text-[#FF6B00]': letter.isHappy }" @mouseenter="letter.isHovered = true" @mouseleave="letter.isHovered = false" @touchstart="letter.isHovered = true" @touchend="letter.isHovered = false">{{ letter.char === ' ' ? '\u00A0' : letter.char }}</span></span>
                     </transition-group>
                 </div>
             </div>
 
-            <a href="#" @click.prevent="scrollTo('about')" class="absolute z-40 flex items-center justify-center w-24 h-24 -bottom-12 group pointer-events-auto">
+            <a href="#" @click.prevent="scrollTo('about')" class="absolute z-40 flex items-center justify-center w-20 h-20 md:w-24 md:h-24 bottom-4 md:-bottom-12 group pointer-events-auto">
                 <div class="absolute inset-0 bg-[#111111] rounded-full transition-transform group-hover:scale-105"></div>
                 <div class="absolute inset-2 border border-white/20 rounded-full animate-spin-slow flex items-center justify-center">
                     <svg class="w-full h-full text-white/50" viewBox="0 0 100 100">
@@ -170,8 +170,8 @@
                         <text class="text-[11px] font-bold tracking-widest uppercase" fill="currentColor"><textPath href="#curve">Scroll Down • Scroll Down • </textPath></text>
                     </svg>
                 </div>
-                <div class="relative z-10 flex items-center justify-center w-10 h-14 border-2 border-[#FF6B00] rounded-full text-[#FF6B00]">
-                    <span class="w-1 h-3 bg-[#FF6B00] rounded-full animate-bounce"></span>
+                <div class="relative z-10 flex items-center justify-center w-8 h-12 md:w-10 md:h-14 border-2 border-[#FF6B00] rounded-full text-[#FF6B00]">
+                    <span class="w-1 h-2 md:h-3 bg-[#FF6B00] rounded-full animate-bounce"></span>
                 </div>
             </a>
         </section>
@@ -181,45 +181,45 @@
             <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 
                 <div class="flex flex-col relative z-20">
-                    <p class="mb-2 text-sm font-bold tracking-widest text-gray-500 uppercase">Hello</p>
+                    <p class="mb-2 text-xs md:text-sm font-bold tracking-widest text-gray-500 uppercase">Hello</p>
                     <h2 class="mb-6 text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter uppercase">I'm <span class="text-[#FF6B00]">Nipun</span></h2>
                     
-                    <p class="mb-14 text-gray-400 font-medium leading-relaxed max-w-lg text-sm md:text-base scroll-animate opacity-0 transform translate-y-8 transition-all duration-700">
+                    <p class="mb-10 md:mb-14 text-gray-400 font-medium leading-relaxed max-w-lg text-sm md:text-base scroll-animate opacity-0 transform translate-y-8 transition-all duration-700">
                         I'm Nipun Sudaraka, a tech enthusiast focused on software engineering and UI/UX design. I enjoy building clean, scalable digital products and crafting modern user experiences.
                     </p>
 
-                    <h3 class="mb-8 text-sm font-bold tracking-widest text-gray-500 uppercase scroll-animate opacity-0 transform translate-y-8 transition-all duration-700">Education</h3>
+                    <h3 class="mb-6 md:mb-8 text-xs md:text-sm font-bold tracking-widest text-gray-500 uppercase scroll-animate opacity-0 transform translate-y-8 transition-all duration-700">Education</h3>
                     
-                    <div class="relative pl-8 border-l-2 border-gray-800 space-y-12">
+                    <div class="relative pl-6 md:pl-8 border-l-2 border-gray-800 space-y-10 md:space-y-12">
                         <div class="timeline-item relative scroll-animate opacity-0 transform translate-y-8 transition-all duration-700 delay-100">
-                            <div class="absolute w-4 h-4 rounded-full transition-all duration-500 -left-[41px] top-1" :class="timelineActive[0] ? 'bg-[#FF6B00] shadow-[0_0_12px_#FF6B00]' : 'bg-gray-600'"></div>
-                            <h4 class="text-lg md:text-xl font-bold text-white mb-1 transition-colors duration-500" :class="timelineActive[0] ? 'text-white' : 'text-gray-400'">Higher National Diploma in Information Technology (HNDIT)</h4>
-                            <p class="text-xs md:text-sm font-semibold mb-3 transition-colors duration-500" :class="timelineActive[0] ? 'text-[#FF6B00]' : 'text-gray-500'">2024 - Present <span class="text-gray-500 ml-2 font-medium">| SLIATE</span></p>
-                            <p class="text-gray-400 text-xs md:text-sm leading-relaxed max-w-xl transition-opacity duration-500" :class="timelineActive[0] ? 'opacity-100' : 'opacity-60'">
-                                <span class="block mb-2 font-medium text-white/80">Currently undergraduate, planning to pursue a Top-up degree.</span>
+                            <div class="absolute w-3 h-3 md:w-4 md:h-4 rounded-full transition-all duration-500 -left-[29px] md:-left-[41px] top-1 md:top-1" :class="timelineActive[0] ? 'bg-[#FF6B00] shadow-[0_0_12px_#FF6B00]' : 'bg-gray-600'"></div>
+                            <h4 class="text-base md:text-xl font-bold text-white mb-1 transition-colors duration-500" :class="timelineActive[0] ? 'text-white' : 'text-gray-400'">Higher National Diploma in Information Technology (HNDIT)</h4>
+                            <p class="text-xs md:text-sm font-semibold mb-2 md:mb-3 transition-colors duration-500" :class="timelineActive[0] ? 'text-[#FF6B00]' : 'text-gray-500'">2024 - Present <span class="text-gray-500 ml-2 font-medium">| SLIATE</span></p>
+                            <p class="text-gray-400 text-[11px] md:text-sm leading-relaxed max-w-xl transition-opacity duration-500" :class="timelineActive[0] ? 'opacity-100' : 'opacity-60'">
+                                <span class="block mb-1 md:mb-2 font-medium text-white/80">Currently undergraduate, planning to pursue a Top-up degree.</span>
                                 • Relevant coursework: Software Development, Object Oriented Programming, Web Programming, Database Management Systems, System Analysis and Design.
                             </p>
                         </div>
                         <div class="timeline-item relative scroll-animate opacity-0 transform translate-y-8 transition-all duration-700 delay-200">
-                            <div class="absolute w-4 h-4 rounded-full transition-all duration-500 -left-[41px] top-1" :class="timelineActive[1] ? 'bg-[#FF6B00] shadow-[0_0_12px_#FF6B00]' : 'bg-gray-600'"></div>
-                            <h4 class="text-base md:text-lg font-bold mb-1 transition-colors duration-500" :class="timelineActive[1] ? 'text-white' : 'text-gray-400'">G.C.E. (A/L) Examination</h4>
-                            <p class="text-xs md:text-sm font-medium transition-colors duration-500" :class="timelineActive[1] ? 'text-gray-300' : 'text-gray-500'">2020 - 2022 (2023) <span class="text-gray-500 ml-2">| Ke/Mw Ashoka Maha Vidyalaya</span></p>
+                            <div class="absolute w-3 h-3 md:w-4 md:h-4 rounded-full transition-all duration-500 -left-[29px] md:-left-[41px] top-1" :class="timelineActive[1] ? 'bg-[#FF6B00] shadow-[0_0_12px_#FF6B00]' : 'bg-gray-600'"></div>
+                            <h4 class="text-sm md:text-lg font-bold mb-1 transition-colors duration-500" :class="timelineActive[1] ? 'text-white' : 'text-gray-400'">G.C.E. (A/L) Examination</h4>
+                            <p class="text-[11px] md:text-sm font-medium transition-colors duration-500" :class="timelineActive[1] ? 'text-gray-300' : 'text-gray-500'">2020 - 2022 (2023) <span class="text-gray-500 ml-2">| Ke/Mw Ashoka Maha Vidyalaya</span></p>
                         </div>
                         <div class="timeline-item relative scroll-animate opacity-0 transform translate-y-8 transition-all duration-700 delay-300">
-                            <div class="absolute w-4 h-4 rounded-full transition-all duration-500 -left-[41px] top-1" :class="timelineActive[2] ? 'bg-[#FF6B00] shadow-[0_0_12px_#FF6B00]' : 'bg-gray-600'"></div>
-                            <h4 class="text-base md:text-lg font-bold mb-1 transition-colors duration-500" :class="timelineActive[2] ? 'text-white' : 'text-gray-400'">G.C.E. (O/L) Examination</h4>
-                            <p class="text-xs md:text-sm font-medium transition-colors duration-500" :class="timelineActive[2] ? 'text-gray-300' : 'text-gray-500'">2018 <span class="text-gray-500 ml-2">| Ke/Mw Ashoka Maha Vidyalaya</span></p>
+                            <div class="absolute w-3 h-3 md:w-4 md:h-4 rounded-full transition-all duration-500 -left-[29px] md:-left-[41px] top-1" :class="timelineActive[2] ? 'bg-[#FF6B00] shadow-[0_0_12px_#FF6B00]' : 'bg-gray-600'"></div>
+                            <h4 class="text-sm md:text-lg font-bold mb-1 transition-colors duration-500" :class="timelineActive[2] ? 'text-white' : 'text-gray-400'">G.C.E. (O/L) Examination</h4>
+                            <p class="text-[11px] md:text-sm font-medium transition-colors duration-500" :class="timelineActive[2] ? 'text-gray-300' : 'text-gray-500'">2018 <span class="text-gray-500 ml-2">| Ke/Mw Ashoka Maha Vidyalaya</span></p>
                         </div>
                     </div>
                 </div>
 
-                <div class="relative flex justify-center lg:justify-end z-40 scroll-animate-img opacity-0 transform translate-x-8 transition-all duration-1000 delay-300 mt-12 lg:mt-0 w-full pl-0 lg:pl-12">
+                <div class="relative flex justify-center lg:justify-end z-40 scroll-animate-img opacity-0 transform translate-x-8 transition-all duration-1000 delay-300 mt-16 lg:mt-0 w-full pl-0 lg:pl-12">
                     
                     <div v-if="showDetails" class="fixed inset-0 z-10 cursor-default" @click.stop="showDetails = false"></div>
 
-                    <div class="relative z-20 flex items-center justify-center w-full max-w-[480px]">
+                    <div class="relative z-20 flex items-center justify-center w-full max-w-[280px] sm:max-w-[320px] md:max-w-[480px]">
                         
-                        <div class="absolute right-[35%] lg:right-[85%] top-1/2 -translate-y-1/2 w-[320px] md:w-[350px] h-[450px] pointer-events-none transition-opacity duration-500 mr-2 md:mr-6 z-0"
+                        <div class="absolute right-[5%] sm:right-[15%] lg:right-[85%] top-1/2 -translate-y-1/2 w-[320px] md:w-[350px] h-[450px] pointer-events-none transition-opacity duration-500 mr-2 md:mr-6 z-0 scale-[0.75] sm:scale-100 origin-right"
                              :class="showDetails ? 'opacity-100' : 'opacity-0'">
 
                              <svg class="absolute inset-0 w-full h-full overflow-visible z-0" :class="showDetails ? 'opacity-100' : 'opacity-0'">
@@ -316,17 +316,17 @@
                              </div>
                         </div>
 
-                        <div class="absolute right-[90%] md:right-[105%] top-[40%] -translate-y-1/2 flex items-center transition-opacity duration-300 pointer-events-none mr-4"
+                        <div class="absolute right-[85%] sm:right-[95%] md:right-[105%] top-[40%] -translate-y-1/2 flex items-center transition-opacity duration-300 pointer-events-none mr-2 md:mr-4 scale-[0.8] sm:scale-100"
                              :class="showDetails ? 'opacity-0' : 'opacity-100 animate-wave-float'">
                              <span class="text-[#111111] font-black text-[10px] uppercase tracking-widest mr-2 drop-shadow-md border border-white/40 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-sm whitespace-nowrap">Click Here</span>
-                             <svg width="50" height="25" viewBox="0 0 50 25" class="overflow-visible text-white">
+                             <svg width="40" height="20" viewBox="0 0 50 25" class="overflow-visible text-white md:w-[50px] md:h-[25px]">
                                  <path d="M 0 12 Q 25 -8 45 12" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="5 5" class="animate-arrow-flow" />
                                  <polygon points="40,7 50,12 40,17" fill="currentColor" />
                              </svg>
                         </div>
 
-                        <div class="w-full max-w-[320px] md:max-w-[400px] relative cursor-pointer group z-30 transition-transform duration-500"
-                             :class="showDetails ? 'scale-105' : 'hover:scale-[1.02]'"
+                        <div class="w-[260px] sm:w-[320px] md:w-full md:max-w-[400px] relative cursor-pointer group z-30 transition-transform duration-500"
+                             :class="showDetails ? 'scale-[1.02] sm:scale-105' : 'hover:scale-[1.02]'"
                              @click.stop="showDetails = !showDetails">
                             
                             <img src="/images/aboutme.jpg" alt="About Me Details"
@@ -334,8 +334,8 @@
                                  style="-webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%); mask-image: linear-gradient(to bottom, black 80%, transparent 100%);"
                                  :class="showDetails ? 'grayscale-0 mix-blend-normal' : 'grayscale opacity-75 mix-blend-luminosity group-hover:opacity-100'" />
                                  
-                            <div class="absolute top-0 right-2 md:right-4 h-full py-6 md:py-8 z-40 pointer-events-none flex items-center justify-center overflow-hidden transition-opacity duration-500">
-                                <span class="vertical-quote text-[10px] md:text-[13px] font-black tracking-[0.25em] whitespace-nowrap scroll-animate opacity-0 transform translate-y-12 transition-all duration-[1200ms] ease-out delay-700">
+                            <div class="absolute top-0 right-2 md:right-4 h-full py-4 sm:py-6 md:py-8 z-40 pointer-events-none flex items-center justify-center overflow-hidden transition-opacity duration-500">
+                                <span class="vertical-quote text-[9px] sm:text-[10px] md:text-[13px] font-black tracking-[0.25em] whitespace-nowrap scroll-animate opacity-0 transform translate-y-12 transition-all duration-[1200ms] ease-out delay-700">
                                     Engineering digital experiences with intention & artistic precision
                                 </span>
                             </div>
@@ -349,31 +349,31 @@
         </section>
 
         <!-- 3.5 TECHNOLOGIES SCROLLING SECTION -->
-        <section class="py-24 bg-white overflow-hidden border-y border-gray-100">
-            <div class="max-w-[1400px] mx-auto px-6 mb-16 text-center">
-                <h2 class="text-2xl md:text-3xl lg:text-4xl font-medium text-gray-500 tracking-tight">Technologies & tools I <span class="font-black text-[#111111]">build & collaborate</span> with.</h2>
+        <section class="py-16 md:py-24 bg-white overflow-hidden border-y border-gray-100">
+            <div class="max-w-[1400px] mx-auto px-4 md:px-6 mb-12 md:mb-16 text-center">
+                <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-gray-500 tracking-tight">Technologies & tools I <span class="font-black text-[#111111]">build & collaborate</span> with.</h2>
             </div>
 
             <div class="relative w-full flex flex-col border-t border-gray-100 overflow-hidden">
                 
                 <div class="flex animate-scroll-left w-max hover:[animation-play-state:paused] cursor-pointer border-b border-gray-100">
-                    <div v-for="(item, index) in [...row1, ...row1]" :key="'r1'+index" class="flex items-center justify-center gap-4 w-[200px] md:w-[250px] border-r border-gray-100 py-6 md:py-8 shrink-0 transition-colors hover:bg-gray-50">
-                        <div class="w-8 h-8 flex items-center justify-center" v-html="item.svg"></div>
-                        <span class="font-bold text-[#111111] text-sm md:text-base">{{ item.name }}</span>
+                    <div v-for="(item, index) in [...row1, ...row1]" :key="'r1'+index" class="flex items-center justify-center gap-3 md:gap-4 w-[160px] md:w-[250px] border-r border-gray-100 py-4 md:py-8 shrink-0 transition-colors hover:bg-gray-50">
+                        <div class="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center" v-html="item.svg"></div>
+                        <span class="font-bold text-[#111111] text-xs md:text-base">{{ item.name }}</span>
                     </div>
                 </div>
 
                 <div class="flex animate-scroll-right w-max hover:[animation-play-state:paused] cursor-pointer border-b border-gray-100">
-                    <div v-for="(item, index) in [...row2, ...row2]" :key="'r2'+index" class="flex items-center justify-center gap-4 w-[200px] md:w-[250px] border-r border-gray-100 py-6 md:py-8 shrink-0 transition-colors hover:bg-gray-50">
-                        <div class="w-8 h-8 flex items-center justify-center" v-html="item.svg"></div>
-                        <span class="font-bold text-[#111111] text-sm md:text-base">{{ item.name }}</span>
+                    <div v-for="(item, index) in [...row2, ...row2]" :key="'r2'+index" class="flex items-center justify-center gap-3 md:gap-4 w-[160px] md:w-[250px] border-r border-gray-100 py-4 md:py-8 shrink-0 transition-colors hover:bg-gray-50">
+                        <div class="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center" v-html="item.svg"></div>
+                        <span class="font-bold text-[#111111] text-xs md:text-base">{{ item.name }}</span>
                     </div>
                 </div>
 
                 <div class="flex animate-scroll-left w-max hover:[animation-play-state:paused] cursor-pointer border-b border-gray-100" style="animation-duration: 35s;">
-                    <div v-for="(item, index) in [...row3, ...row3]" :key="'r3'+index" class="flex items-center justify-center gap-4 w-[200px] md:w-[250px] border-r border-gray-100 py-6 md:py-8 shrink-0 transition-colors hover:bg-gray-50">
-                        <div class="w-8 h-8 flex items-center justify-center" v-html="item.svg"></div>
-                        <span class="font-bold text-[#111111] text-sm md:text-base">{{ item.name }}</span>
+                    <div v-for="(item, index) in [...row3, ...row3]" :key="'r3'+index" class="flex items-center justify-center gap-3 md:gap-4 w-[160px] md:w-[250px] border-r border-gray-100 py-4 md:py-8 shrink-0 transition-colors hover:bg-gray-50">
+                        <div class="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center" v-html="item.svg"></div>
+                        <span class="font-bold text-[#111111] text-xs md:text-base">{{ item.name }}</span>
                     </div>
                 </div>
 
@@ -381,27 +381,27 @@
         </section>
 
         <!-- 4. OUR WORKS SECTION -->
-        <section id="projects" class="px-6 py-24 md:py-32 bg-white lg:px-16 overflow-hidden border-t border-gray-100">
+        <section id="projects" class="px-4 sm:px-6 py-20 md:py-32 bg-white lg:px-16 overflow-hidden border-t border-gray-100">
             <div class="max-w-[1400px] mx-auto relative">
                 
-                <div class="flex flex-col xl:flex-row xl:items-end justify-between gap-8 mb-12">
+                <div class="flex flex-col xl:flex-row xl:items-end justify-between gap-6 md:gap-8 mb-10 md:mb-12">
                     <div>
-                        <h2 class="text-4xl md:text-5xl lg:text-[56px] font-black text-[#111111] tracking-tighter mb-2 flex items-baseline gap-3">
-                            Our Works <span class="text-xl md:text-2xl text-gray-400 font-medium tracking-normal">({{ filteredProjects.length }})</span>
+                        <h2 class="text-3xl md:text-5xl lg:text-[56px] font-black text-[#111111] tracking-tighter mb-2 flex items-baseline gap-3">
+                            Our Works <span class="text-lg md:text-2xl text-gray-400 font-medium tracking-normal">({{ filteredProjects.length }})</span>
                         </h2>
                         <p class="text-gray-500 font-medium text-sm md:text-base">Explore digital journeys designed and developed with precision & creativity.</p>
                     </div>
                     
-                    <div class="flex flex-col sm:flex-row items-center gap-4 md:gap-6">
+                    <div class="flex flex-col sm:flex-row items-center gap-4 md:gap-6 w-full xl:w-auto">
                         <div class="flex items-center p-1.5 bg-gray-50 rounded-full border border-gray-100 overflow-x-auto w-full sm:w-auto scrollbar-hide">
                             <button v-for="cat in categories" :key="cat"
                                     @click="activeCategory = cat"
-                                    class="px-6 py-2.5 text-xs font-bold rounded-full transition-colors whitespace-nowrap"
+                                    class="px-4 sm:px-6 py-2 sm:py-2.5 text-[11px] sm:text-xs font-bold rounded-full transition-colors whitespace-nowrap"
                                     :class="activeCategory === cat ? 'bg-white text-[#111111] shadow-sm' : 'text-gray-500 hover:text-[#111111]'">
                                 {{ cat }}
                             </button>
                         </div>
-                        <div class="flex gap-2 shrink-0">
+                        <div class="hidden sm:flex gap-2 shrink-0">
                             <button @click="scrollProjects('left')" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-[#111111] hover:border-gray-300 transition-colors cursor-pointer">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -416,35 +416,35 @@
                     </div>
                 </div>
 
-                <transition-group name="project-list" tag="div" ref="projectsScrollRef" class="flex gap-6 overflow-x-auto pb-12 snap-x snap-mandatory scrollbar-hide scroll-smooth" style="scrollbar-width: none; -ms-overflow-style: none;">
+                <transition-group name="project-list" tag="div" ref="projectsScrollRef" class="flex gap-4 md:gap-6 overflow-x-auto pb-8 md:pb-12 snap-x snap-mandatory scrollbar-hide scroll-smooth" style="scrollbar-width: none; -ms-overflow-style: none;">
                     
-                    <div v-for="project in filteredProjects" :key="project.id" class="relative w-[320px] md:w-[380px] h-[520px] shrink-0 rounded-[32px] overflow-hidden group snap-start bg-[#111]">
+                    <div v-for="project in filteredProjects" :key="project.id" class="relative w-[280px] sm:w-[320px] md:w-[380px] h-[450px] md:h-[520px] shrink-0 rounded-[24px] md:rounded-[32px] overflow-hidden group snap-start bg-[#111]">
                         <img :src="project.image" class="absolute inset-0 w-full h-1/2 object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" :alt="project.title">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/90 to-transparent"></div>
                         
-                        <div class="absolute top-5 left-5 px-3 py-1.5 bg-black/40 backdrop-blur-md rounded-full border border-white/10 flex items-center gap-2">
+                        <div class="absolute top-4 left-4 md:top-5 md:left-5 px-3 py-1.5 bg-black/40 backdrop-blur-md rounded-full border border-white/10 flex items-center gap-2">
                             <div class="w-1.5 h-1.5 rounded-full bg-[#FF6B00]"></div>
-                            <span class="text-[10px] font-black text-white uppercase tracking-wider">{{ project.category }}</span>
+                            <span class="text-[9px] md:text-[10px] font-black text-white uppercase tracking-wider">{{ project.category }}</span>
                         </div>
 
-                        <div class="absolute bottom-0 left-0 w-full p-6 flex flex-col">
-                            <h3 class="text-2xl font-bold text-white mb-2 leading-tight">{{ project.title }}</h3>
-                            <p class="text-gray-400 text-xs leading-relaxed mb-5 line-clamp-2">{{ project.description }}</p>
+                        <div class="absolute bottom-0 left-0 w-full p-5 md:p-6 flex flex-col">
+                            <h3 class="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">{{ project.title }}</h3>
+                            <p class="text-gray-400 text-[11px] md:text-xs leading-relaxed mb-4 md:mb-5 line-clamp-2">{{ project.description }}</p>
                             
-                            <div class="flex items-center justify-between mb-6">
-                                <div class="flex items-center gap-2">
-                                    <span class="text-white font-bold text-xs">{{ project.rating }}</span>
-                                    <div class="flex text-yellow-500 text-[10px]">★★★★★</div>
+                            <div class="flex items-center justify-between mb-5 md:mb-6">
+                                <div class="flex items-center gap-1.5 md:gap-2">
+                                    <span class="text-white font-bold text-[11px] md:text-xs">{{ project.rating }}</span>
+                                    <div class="flex text-yellow-500 text-[9px] md:text-[10px]">★★★★★</div>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <div class="flex -space-x-1">
-                                        <div v-for="(icon, idx) in project.icons" :key="idx" class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center p-1.5" v-html="icon"></div>
+                                        <div v-for="(icon, idx) in project.icons" :key="idx" class="w-5 h-5 md:w-6 md:h-6 rounded-full bg-white/10 flex items-center justify-center p-1 md:p-1.5" v-html="icon"></div>
                                     </div>
-                                    <span class="px-2.5 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] font-semibold text-gray-300">{{ project.tools }}</span>
+                                    <span class="px-2 md:px-2.5 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] md:text-[10px] font-semibold text-gray-300">{{ project.tools }}</span>
                                 </div>
                             </div>
                             
-                            <a :href="project.link" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 bg-white text-[#111111] rounded-full text-xs font-bold hover:bg-[#FF6B00] hover:text-white transition-colors flex justify-center items-center">Explore Now</a>
+                            <a :href="project.link" target="_blank" rel="noopener noreferrer" class="w-full py-3 md:py-3.5 bg-white text-[#111111] rounded-full text-[11px] md:text-xs font-bold hover:bg-[#FF6B00] hover:text-white transition-colors flex justify-center items-center">Explore Now</a>
                         </div>
                     </div>
 
@@ -457,19 +457,19 @@
         </section>
 
         <!-- 5. CONTACT & FOOTER SECTION -->
-        <section id="contact" class="bg-[#0a0a0a] text-white pt-24 pb-8 px-6 lg:px-16 border-t border-white/10">
+        <section id="contact" class="bg-[#0a0a0a] text-white pt-20 md:pt-24 pb-8 px-4 sm:px-6 lg:px-16 border-t border-white/10">
             <div class="max-w-[1400px] mx-auto">
                 
                 <!-- Top: Contact Info & Form -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mb-24">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 lg:gap-24 mb-16 md:mb-24">
                     <!-- Left: Info -->
-                    <div class="flex flex-col">
-                        <span class="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] mb-6">Get in touch</span>
-                        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">Let's build<br>something great.</h2>
-                        <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-10 max-w-sm">
+                    <div class="flex flex-col text-center lg:text-left items-center lg:items-start">
+                        <span class="text-[9px] md:text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] mb-4 md:mb-6">Get in touch</span>
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-6 leading-[1.1]">Let's build<br>something great.</h2>
+                        <p class="text-gray-400 text-xs sm:text-sm md:text-base leading-relaxed mb-8 md:mb-10 max-w-sm">
                             Open to freelance projects, collaborations, and full-time opportunities.
                         </p>
-                        <div class="flex items-center gap-6 text-sm font-medium text-gray-400">
+                        <div class="flex items-center gap-4 md:gap-6 text-xs md:text-sm font-medium text-gray-400">
                             <a href="https://github.com/nipunsudaraka" target="_blank" class="hover:text-white transition-colors">GitHub</a>
                             <span class="w-[1px] h-4 bg-gray-700"></span>
                             <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
@@ -477,22 +477,22 @@
                     </div>
 
                     <!-- Right: Form -->
-                    <div class="flex flex-col gap-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="flex flex-col gap-2">
-                                <label class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Name</label>
-                                <input v-model="form.name" type="text" placeholder="Your name" class="bg-[#111111] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#FF6B00] transition-colors">
+                    <div class="flex flex-col gap-4 md:gap-6 w-full max-w-md mx-auto lg:max-w-none">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+                            <div class="flex flex-col gap-1.5 md:gap-2">
+                                <label class="text-[9px] md:text-[10px] font-bold text-gray-500 uppercase tracking-widest">Name</label>
+                                <input v-model="form.name" type="text" placeholder="Your name" class="bg-[#111111] border border-white/10 rounded-xl px-4 py-3 md:py-3.5 text-xs md:text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#FF6B00] transition-colors w-full">
                             </div>
-                            <div class="flex flex-col gap-2">
-                                <label class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Email</label>
-                                <input v-model="form.email" type="email" placeholder="you@email.com" class="bg-[#111111] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#FF6B00] transition-colors">
+                            <div class="flex flex-col gap-1.5 md:gap-2">
+                                <label class="text-[9px] md:text-[10px] font-bold text-gray-500 uppercase tracking-widest">Email</label>
+                                <input v-model="form.email" type="email" placeholder="you@email.com" class="bg-[#111111] border border-white/10 rounded-xl px-4 py-3 md:py-3.5 text-xs md:text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#FF6B00] transition-colors w-full">
                             </div>
                         </div>
-                        <div class="flex flex-col gap-2">
-                            <label class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Message</label>
-                            <textarea v-model="form.details" placeholder="Tell me about your project..." rows="4" class="bg-[#111111] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#FF6B00] transition-colors resize-none"></textarea>
+                        <div class="flex flex-col gap-1.5 md:gap-2">
+                            <label class="text-[9px] md:text-[10px] font-bold text-gray-500 uppercase tracking-widest">Message</label>
+                            <textarea v-model="form.details" placeholder="Tell me about your project..." rows="4" class="bg-[#111111] border border-white/10 rounded-xl px-4 py-3 md:py-3.5 text-xs md:text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#FF6B00] transition-colors resize-none w-full"></textarea>
                         </div>
-                        <button @click="submitFooterForm" class="bg-white text-[#111111] font-bold text-sm px-8 py-3.5 rounded-xl w-max hover:bg-[#FF6B00] hover:text-white transition-colors flex items-center gap-2 mt-2">
+                        <button @click="submitFooterForm" class="bg-white text-[#111111] font-bold text-xs md:text-sm px-6 md:px-8 py-3 md:py-3.5 rounded-xl w-full sm:w-max justify-center hover:bg-[#FF6B00] hover:text-white transition-colors flex items-center gap-2 mt-2">
                             Send Message
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -502,14 +502,14 @@
                 </div>
 
                 <!-- Bottom: Footer Links & Copyright -->
-                <div class="flex flex-col gap-8">
+                <div class="flex flex-col gap-6 md:gap-8">
                     <!-- Middle: Brand & Links -->
-                    <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-white/10">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 md:pb-8 border-b border-white/10">
                         <div class="flex items-center gap-3">
                             <img src="/images/me.png" alt="Nipun" class="w-8 h-8 rounded-full object-cover bg-[#FF6B00]">
-                            <span class="font-bold text-white tracking-tight">nipun.sudaraka</span>
+                            <span class="font-bold text-white tracking-tight text-sm">nipun.sudaraka</span>
                         </div>
-                        <div class="flex flex-wrap justify-center gap-6 md:gap-8 text-xs font-medium text-gray-400">
+                        <div class="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 text-[11px] md:text-xs font-medium text-gray-400">
                             <a href="#" @click.prevent="scrollTo('home')" class="hover:text-white transition-colors">Overview</a>
                             <a href="#" @click.prevent="scrollTo('projects')" class="hover:text-white transition-colors">Work</a>
                             <a href="#" @click.prevent="scrollTo('about')" class="hover:text-white transition-colors">About</a>
@@ -518,9 +518,9 @@
                     </div>
 
                     <!-- Very Bottom: Copyright & Status -->
-                    <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] font-medium text-gray-500">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-3 text-[10px] md:text-[11px] font-medium text-gray-500 text-center md:text-left">
                         <p>© {{ new Date().getFullYear() }} nipun.sudaraka. All rights reserved.</p>
-                        <div class="flex items-center gap-2">
+                        <div class="flex items-center justify-center gap-2">
                             <div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
                             <span>Sri Lanka · Remote</span>
                         </div>
@@ -534,132 +534,132 @@
         <!-- MULTI-STEP HIRE ME MODAL -->
         <transition name="modal-fade">
             <div v-if="isModalOpen" class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-                <div class="bg-white rounded-[32px] w-full max-w-2xl shadow-2xl overflow-hidden" @click.stop>
+                <div class="bg-white rounded-[24px] md:rounded-[32px] w-full max-w-2xl shadow-2xl overflow-hidden" @click.stop>
                     
-                    <div class="p-6 md:p-8 pb-4 relative">
-                        <button @click="closeModal" class="absolute top-6 right-6 w-8 h-8 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full flex items-center justify-center transition-colors">
+                    <div class="p-5 md:p-8 pb-3 md:pb-4 relative">
+                        <button @click="closeModal" class="absolute top-4 right-4 md:top-6 md:right-6 w-8 h-8 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full flex items-center justify-center transition-colors">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
                         
-                        <p class="text-[10px] font-bold text-[#FF6B00] uppercase tracking-widest mb-2">Step {{ currentStep }} of 3 - Start A Project</p>
-                        <h3 class="text-2xl md:text-3xl font-black text-[#111111] tracking-tight">
+                        <p class="text-[9px] md:text-[10px] font-bold text-[#FF6B00] uppercase tracking-widest mb-1.5 md:mb-2">Step {{ currentStep }} of 3 - Start A Project</p>
+                        <h3 class="text-xl md:text-3xl font-black text-[#111111] tracking-tight">
                             {{ currentStep === 1 ? 'Select Required Service' : currentStep === 2 ? 'Estimated Timeline' : 'Choose Inquiry Method' }}
                         </h3>
                     </div>
 
-                    <div class="px-6 md:px-8 pb-6">
-                        <div class="flex items-center justify-between relative mt-4">
+                    <div class="px-5 md:px-8 pb-5 md:pb-6">
+                        <div class="flex items-center justify-between relative mt-2 md:mt-4">
                             <div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-gray-100 z-0"></div>
                             <div class="absolute left-0 top-1/2 -translate-y-1/2 h-[2px] bg-[#FF6B00] z-0 transition-all duration-300" :style="{ width: ((currentStep - 1) * 50) + '%' }"></div>
                             
                             <div v-for="step in 3" :key="'step'+step" class="relative z-10 flex flex-col items-center bg-white px-2">
-                                <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-colors duration-300"
+                                <div class="w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center text-[10px] md:text-xs font-bold transition-colors duration-300"
                                      :class="currentStep > step ? 'bg-[#FF6B00] text-white' : currentStep === step ? 'bg-[#FF6B00] text-white shadow-md shadow-[#FF6B00]/30' : 'bg-gray-100 text-gray-400'">
                                     <span v-if="currentStep <= step">{{ step }}</span>
-                                    <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg v-else class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
                                     </svg>
                                 </div>
-                                <span class="text-[9px] font-bold uppercase tracking-widest mt-2 transition-colors duration-300" :class="currentStep >= step ? 'text-[#FF6B00]' : 'text-gray-400'">
+                                <span class="text-[8px] md:text-[9px] font-bold uppercase tracking-widest mt-1.5 md:mt-2 transition-colors duration-300" :class="currentStep >= step ? 'text-[#FF6B00]' : 'text-gray-400'">
                                     {{ step === 1 ? 'Service' : step === 2 ? 'Timeline' : 'Contact' }}
                                 </span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="px-6 md:px-8 pb-8">
+                    <div class="px-5 md:px-8 pb-6 md:pb-8">
                         
-                        <div v-if="currentStep === 1" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div v-if="currentStep === 1" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 md:gap-3">
                             <button v-for="srv in servicesList" :key="srv.name" @click="form.service = srv.name" 
-                                    class="p-4 border rounded-2xl flex items-center gap-3 transition-all text-left"
+                                    class="p-3 md:p-4 border rounded-xl md:rounded-2xl flex items-center gap-3 transition-all text-left"
                                     :class="form.service === srv.name ? 'border-[#FF6B00] bg-[#FF6B00]/5 ring-1 ring-[#FF6B00]' : 'border-gray-200 hover:border-[#FF6B00]/50'">
-                                <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0" :class="form.service === srv.name ? 'bg-[#FF6B00]/20 text-[#FF6B00]' : 'bg-gray-50 text-gray-500'">
+                                <div class="w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center shrink-0" :class="form.service === srv.name ? 'bg-[#FF6B00]/20 text-[#FF6B00]' : 'bg-gray-50 text-gray-500'">
                                     <div v-html="srv.icon"></div>
                                 </div>
-                                <span class="font-bold text-sm text-[#111111] flex-1">{{ srv.name }}</span>
-                                <div class="w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0" :class="form.service === srv.name ? 'border-[#FF6B00]' : 'border-gray-300'">
-                                    <div v-if="form.service === srv.name" class="w-2 h-2 bg-[#FF6B00] rounded-full"></div>
+                                <span class="font-bold text-xs md:text-sm text-[#111111] flex-1">{{ srv.name }}</span>
+                                <div class="w-3.5 h-3.5 md:w-4 md:h-4 rounded-full border-2 flex items-center justify-center shrink-0" :class="form.service === srv.name ? 'border-[#FF6B00]' : 'border-gray-300'">
+                                    <div v-if="form.service === srv.name" class="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#FF6B00] rounded-full"></div>
                                 </div>
                             </button>
                         </div>
 
-                        <div v-if="currentStep === 2" class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div v-if="currentStep === 2" class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 md:gap-3">
                             <button v-for="time in timelineList" :key="time" @click="form.timeline = time" 
-                                    class="p-5 border rounded-2xl flex flex-col items-center justify-center gap-2 transition-all text-center"
+                                    class="p-4 md:p-5 border rounded-xl md:rounded-2xl flex flex-row sm:flex-col items-center justify-between sm:justify-center gap-2 transition-all text-center"
                                     :class="form.timeline === time ? 'border-[#FF6B00] bg-[#FF6B00]/5 ring-1 ring-[#FF6B00]' : 'border-gray-200 hover:border-[#FF6B00]/50'">
-                                <span class="font-black text-lg text-[#111111]">{{ time }}</span>
-                                <div class="w-4 h-4 rounded-full border-2 mt-2 flex items-center justify-center" :class="form.timeline === time ? 'border-[#FF6B00]' : 'border-gray-300'">
-                                    <div v-if="form.timeline === time" class="w-2 h-2 bg-[#FF6B00] rounded-full"></div>
+                                <span class="font-black text-sm md:text-lg text-[#111111]">{{ time }}</span>
+                                <div class="w-3.5 h-3.5 md:w-4 md:h-4 rounded-full border-2 sm:mt-2 flex items-center justify-center" :class="form.timeline === time ? 'border-[#FF6B00]' : 'border-gray-300'">
+                                    <div v-if="form.timeline === time" class="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#FF6B00] rounded-full"></div>
                                 </div>
                             </button>
                         </div>
 
                         <div v-if="currentStep === 3" class="animate-fade-in">
-                            <div class="mb-5 flex items-center gap-2 p-1 bg-gray-50 rounded-xl border border-gray-100">
-                                <button @click="form.contactMethod = 'whatsapp'" class="flex-1 py-3 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-2" :class="form.contactMethod === 'whatsapp' ? 'bg-white shadow-sm text-[#FF6B00] border border-gray-200' : 'text-gray-500 hover:text-[#111111]'">
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <div class="mb-4 md:mb-5 flex items-center gap-1.5 p-1 bg-gray-50 rounded-xl border border-gray-100">
+                                <button @click="form.contactMethod = 'whatsapp'" class="flex-1 py-2.5 md:py-3 text-[11px] md:text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 md:gap-2" :class="form.contactMethod === 'whatsapp' ? 'bg-white shadow-sm text-[#FF6B00] border border-gray-200' : 'text-gray-500 hover:text-[#111111]'">
+                                    <svg class="w-3.5 h-3.5 md:w-4 md:h-4" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                                     </svg>
                                     WhatsApp Inquiry
                                 </button>
-                                <button @click="form.contactMethod = 'email'" class="flex-1 py-3 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-2" :class="form.contactMethod === 'email' ? 'bg-white shadow-sm text-[#FF6B00] border border-gray-200' : 'text-gray-500 hover:text-[#111111]'">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <button @click="form.contactMethod = 'email'" class="flex-1 py-2.5 md:py-3 text-[11px] md:text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 md:gap-2" :class="form.contactMethod === 'email' ? 'bg-white shadow-sm text-[#FF6B00] border border-gray-200' : 'text-gray-500 hover:text-[#111111]'">
+                                    <svg class="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
                                     Email Inquiry
                                 </button>
                             </div>
 
-                            <div class="mb-5 p-3 rounded-lg border flex items-center gap-2" :class="form.contactMethod === 'whatsapp' ? 'bg-[#25D366]/10 border-[#25D366]/30 text-[#25D366]' : 'bg-[#FF6B00]/10 border-[#FF6B00]/30 text-[#FF6B00]'">
-                                <svg v-if="form.contactMethod === 'whatsapp'" class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                            <div class="mb-4 md:mb-5 p-2.5 md:p-3 rounded-lg border flex items-center gap-2" :class="form.contactMethod === 'whatsapp' ? 'bg-[#25D366]/10 border-[#25D366]/30 text-[#25D366]' : 'bg-[#FF6B00]/10 border-[#FF6B00]/30 text-[#FF6B00]'">
+                                <svg v-if="form.contactMethod === 'whatsapp'" class="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                                 </svg>
-                                <svg v-else class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg v-else class="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
-                                <span class="text-xs font-bold">{{ form.contactMethod === 'whatsapp' ? 'Direct to WhatsApp: +94710474475' : 'Direct to Email: sudarakanipun07@gmail.com' }}</span>
+                                <span class="text-[10px] md:text-xs font-bold">{{ form.contactMethod === 'whatsapp' ? 'Direct to WhatsApp: +94710474475' : 'Direct to Email: sudarakanipun07@gmail.com' }}</span>
                             </div>
 
-                            <div class="mb-4">
-                                <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1.5">Your Name</label>
-                                <input v-model="form.name" type="text" placeholder="e.g. Alex" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00] outline-none transition-all text-sm font-medium" />
+                            <div class="mb-3 md:mb-4">
+                                <label class="block text-[9px] md:text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1 md:mb-1.5">Your Name</label>
+                                <input v-model="form.name" type="text" placeholder="e.g. Alex" class="w-full px-3 md:px-4 py-2 md:py-2.5 rounded-lg md:rounded-xl border border-gray-200 focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00] outline-none transition-all text-xs md:text-sm font-medium" />
                             </div>
                             
-                            <div class="mb-4">
-                                <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1.5">Your Email</label>
-                                <input v-model="form.email" type="email" placeholder="e.g. alex@example.com" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00] outline-none transition-all text-sm font-medium" />
+                            <div class="mb-3 md:mb-4">
+                                <label class="block text-[9px] md:text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1 md:mb-1.5">Your Email</label>
+                                <input v-model="form.email" type="email" placeholder="e.g. alex@example.com" class="w-full px-3 md:px-4 py-2 md:py-2.5 rounded-lg md:rounded-xl border border-gray-200 focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00] outline-none transition-all text-xs md:text-sm font-medium" />
                             </div>
 
-                            <div class="mb-4">
-                                <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1.5">Project Details (Optional)</label>
-                                <textarea v-model="form.details" placeholder="Briefly describe your project requirements..." rows="3" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00] outline-none transition-all text-sm font-medium resize-none"></textarea>
+                            <div class="mb-3 md:mb-4">
+                                <label class="block text-[9px] md:text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1 md:mb-1.5">Project Details (Optional)</label>
+                                <textarea v-model="form.details" placeholder="Briefly describe your project requirements..." rows="3" class="w-full px-3 md:px-4 py-2 md:py-2.5 rounded-lg md:rounded-xl border border-gray-200 focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00] outline-none transition-all text-xs md:text-sm font-medium resize-none"></textarea>
                             </div>
                         </div>
 
                         <!-- Footer Actions -->
-                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                            <button v-if="currentStep > 1" @click="prevStep" class="px-5 py-2.5 text-xs font-bold text-gray-500 hover:text-[#111111] transition-colors flex items-center gap-1.5">
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="flex items-center justify-between pt-3 md:pt-4 border-t border-gray-100">
+                            <button v-if="currentStep > 1" @click="prevStep" class="px-3 sm:px-5 py-2 md:py-2.5 text-[10px] md:text-xs font-bold text-gray-500 hover:text-[#111111] transition-colors flex items-center gap-1.5">
+                                <svg class="w-3 h-3 md:w-3.5 md:h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
                                 </svg>
                                 Back
                             </button>
-                            <div v-else></div> <!-- Spacer -->
+                            <div v-else></div>
 
-                            <button v-if="currentStep < 3" @click="nextStep" class="px-6 py-2.5 bg-[#111111] text-white text-xs font-bold rounded-full hover:bg-[#FF6B00] transition-colors flex items-center gap-2 shadow-md hover:-translate-y-0.5">
+                            <button v-if="currentStep < 3" @click="nextStep" class="px-4 sm:px-6 py-2 md:py-2.5 bg-[#111111] text-white text-[10px] md:text-xs font-bold rounded-full hover:bg-[#FF6B00] transition-colors flex items-center gap-1.5 md:gap-2 shadow-md hover:-translate-y-0.5 w-full sm:w-auto justify-center">
                                 Continue
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-3 h-3 md:w-3.5 md:h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
                                 </svg>
                             </button>
                             
-                            <button v-else @click="submitForm" class="px-6 py-2.5 text-white text-xs font-bold rounded-full transition-colors flex items-center gap-2 shadow-md hover:-translate-y-0.5" :class="form.contactMethod === 'whatsapp' ? 'bg-[#25D366] hover:bg-[#20b958]' : 'bg-[#FF6B00] hover:bg-[#e66000]'">
-                                <svg v-if="form.contactMethod === 'whatsapp'" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <button v-else @click="submitForm" class="px-4 sm:px-6 py-2 md:py-2.5 text-white text-[10px] md:text-xs font-bold rounded-full transition-colors flex items-center justify-center w-full sm:w-auto gap-1.5 md:gap-2 shadow-md hover:-translate-y-0.5" :class="form.contactMethod === 'whatsapp' ? 'bg-[#25D366] hover:bg-[#20b958]' : 'bg-[#FF6B00] hover:bg-[#e66000]'">
+                                <svg v-if="form.contactMethod === 'whatsapp'" class="w-3.5 h-3.5 md:w-4 md:h-4" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                                 </svg>
-                                <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg v-else class="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
                                 {{ form.contactMethod === 'whatsapp' ? 'Send via WhatsApp' : 'Send via Email' }}
@@ -727,7 +727,6 @@ const submitFooterForm = () => {
     form.value.details = '';
 };
 
-// Custom Smooth Scroll Logic
 const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) {
@@ -736,11 +735,9 @@ const scrollTo = (id) => {
     }
 };
 
-// Project Categories and State
 const categories = ['All Projects', 'Academic Project', 'Client Work', 'Mobile & Apps', '3D & Creative'];
 const activeCategory = ref('All Projects');
 
-// Project Data Object
 const projects = ref([
     {
         id: 1,
@@ -779,7 +776,6 @@ const filteredProjects = computed(() => {
     return projects.value.filter(project => project.category === activeCategory.value);
 });
 
-// Technologies Details for the Marquee
 const row1 = [
     { name: 'JavaScript', svg: '<svg fill="#F7DF1E" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none" /><path d="M6 15.46c-1.04-.3-1.63-.98-1.74-2.02h-2.9c.14 2.29 1.7 3.96 4.63 3.96 2.76 0 4.25-1.4 4.25-3.32 0-2.22-1.68-2.92-4.14-3.5-1.92-.46-2.38-.85-2.38-1.54 0-.75.7-1.3 1.95-1.3 1.34 0 2.05.6 2.14 1.54h2.86c-.1-2.08-1.57-3.52-5-3.52-2.73 0-4.8 1.4-4.8 3.5 0 2.1 1.63 2.78 4.2 3.39 1.83.43 2.34.87 2.34 1.59 0 .86-.82 1.35-2.08 1.35zM15 17.5V3h3v14.5c0 2.82-1.92 4.5-4.85 4.5-2.82 0-4.66-1.54-4.85-3.96h2.95c.1 1.25.96 1.73 1.9 1.73 1.2 0 1.85-.62 1.85-2.27z" /></svg>' },
     { name: 'Vue.js', svg: '<svg viewBox="0 0 256 221" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M204.8 0H256L128 220.8L0 0H51.2L128 132.48L204.8 0Z" fill="#41B883" /><path d="M204.8 0H153.6L128 44.16L102.4 0H51.2L128 132.48L204.8 0Z" fill="#34495E" /></svg>' },
@@ -808,7 +804,7 @@ const isAtAboutSection = computed(() => {
 
 const scrollProjects = (direction) => {
     if (projectsScrollRef.value) {
-        const scrollAmount = 350; 
+        const scrollAmount = window.innerWidth < 768 ? 280 : 350; 
         const currentScroll = projectsScrollRef.value.scrollLeft;
         projectsScrollRef.value.scrollTo({
             left: direction === 'left' ? currentScroll - scrollAmount : currentScroll + scrollAmount,
